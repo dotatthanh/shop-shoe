@@ -15,7 +15,7 @@ class MediaController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Media::orderby('id', 'desc')->public();
+        $query = Media::orderby('id', 'desc');
 
         if ($request->has('media_filter_date') && $request->media_filter_date != 'all') {
             $query->whereMonth('created_at', date('m', strtotime($request->media_filter_date)));
@@ -54,8 +54,8 @@ class MediaController extends Controller
             foreach ($medias as $key => $media) {
                 $data .= '<li id="media-li-'.$media->id.'">'.
                     '<input type="hidden" name="value-id" id ="value-id" value="'.$media->id.'">'.
-                    '<input type="checkbox" id="cb'.$media->id.'" name="check_image_media[]" value="'.$media->urlS3.'"/>'.
-                    '<label for="cb'.$media->id.'"><img src="'.$media->thumbnailS3.'" /></label>'.
+                    '<input type="checkbox" id="cb'.$media->id.'" name="check_image_media[]" value="'.$media->url.'"/>'.
+                    '<label for="cb'.$media->id.'"><img src="'.$media->url.'" /></label>'.
                 '</li>';
             }
         }
