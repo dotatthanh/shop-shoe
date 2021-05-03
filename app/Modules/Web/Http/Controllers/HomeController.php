@@ -17,7 +17,7 @@ class HomeController extends Controller
 	}
 
 	public function productDetail () {
-		return view('web::web.productDetail');
+		return view('web::web.product-detail');
 	}
 
 	public function order () {
