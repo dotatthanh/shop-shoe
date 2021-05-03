@@ -25,5 +25,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/create', 'ProductController@create')->name('product.create');
             Route::get('/store', 'ProductController@store')->name('product.store');
         });
+
+        // Category
+        Route::resource('categories', 'CategoryController');
+        Route::resource('suppliers', 'SupplierController');
     });
 });

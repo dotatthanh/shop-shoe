@@ -31,6 +31,9 @@ body{
   font-family: 'arial';
   color: #000;
 }
+.d-inline-block {
+  display: inline-block;
+}
 .img-responsive{
   margin: auto;
 }
