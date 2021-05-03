@@ -7,7 +7,7 @@ use App\Models\Brand;
 use App\Http\Controllers\Controller;
 use DB;
 
-class BrandController extends Controller
+class BrandController extends AppController
 {
     /**
      * Display a listing of the resource.

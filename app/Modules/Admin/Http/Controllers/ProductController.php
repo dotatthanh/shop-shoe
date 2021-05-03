@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class ProductController extends AppController
 {
     public function index() {
         return view('admin::product.index');

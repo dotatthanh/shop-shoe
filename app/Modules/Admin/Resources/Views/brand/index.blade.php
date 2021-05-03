@@ -1,5 +1,18 @@
 @extends('admin::layouts.master')
 
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            Thương hiệu
+            <small>Danh sách</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">Thương hiệu</li>
+        </ol>
+    </section>
+@endsection
+
 @section('content')
     <div class="box">
         <div class="box-body">
@@ -11,10 +24,10 @@
                                 <div class="box-body">
                                     <div class="form-group">
                                         <div class="col-sm-7">
-                                            <input type="text" name="search" class="form-control" placeholder="Title">
+                                            <input type="text" name="search" class="form-control" placeholder="Từ khóa" value="{{ request()->search }}">
                                         </div>
 
-                                        <button type="submit" class="btn btn-success col-sm-2">Search</button>
+                                        <button type="submit" class="btn btn-success col-sm-2">TÌm kiếm</button>
                                     </div>
                                 </div>
                             </form>
@@ -22,7 +35,7 @@
                         <div class="col-md-6 text-right">
                             <a href="{{ route('admin.brands.create') }}" class="btn btn-success">
                                 <i class="fa fa-plus"></i>
-                                <span>Create</span>
+                                <span>Tạo mới</span>
                             </a>
                         </div>
                     </div>
@@ -33,9 +46,9 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Title</th>
+                                    <th>Tiêu đề</th>
                                     <th>Slug</th>
-                                    <th>Action</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>

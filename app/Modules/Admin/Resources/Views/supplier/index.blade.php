@@ -1,5 +1,18 @@
 @extends('admin::layouts.master')
 
+@section('breadcrumb')
+    <section class="content-header">
+        <h1>
+            Nhà cung cấp
+            <small>Danh sách</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">Nhà cung cấp</li>
+        </ol>
+    </section>
+@endsection
+
 @section('content')
     <div class="box">
         <div class="box-body">
@@ -11,10 +24,10 @@
                                 <div class="box-body">
                                     <div class="form-group">
                                         <div class="col-sm-7">
-                                            <input type="text" name="search" class="form-control" placeholder="Title">
+                                            <input type="text" name="search" class="form-control" placeholder="Từ khóa" value="{{ request()->search }}">
                                         </div>
 
-                                        <button type="submit" class="btn btn-success col-sm-2">Search</button>
+                                        <button type="submit" class="btn btn-success col-sm-2">Tìm kiếm</button>
                                     </div>
                                 </div>
                             </form>
@@ -22,7 +35,7 @@
                         <div class="col-md-6 text-right">
                             <a href="{{ route('admin.suppliers.create') }}" class="btn btn-success">
                                 <i class="fa fa-plus"></i>
-                                <span>Create</span>
+                                <span>Tạo mới</span>
                             </a>
                         </div>
                     </div>
@@ -33,12 +46,12 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
+                                    <th>Tiêu đề</th>
                                     <th>Slug</th>
-                                    <th>Action</th>
+                                    <th>Email</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,10 +59,10 @@
                                 <tr>
                                     <td>{{ $supplier->id }}</td>
                                     <td>{{ $supplier->title }}</td>
+                                    <td>{{ $supplier->slug }}</td>
                                     <td>{{ $supplier->email }}</td>
                                     <td>{{ $supplier->phone }}</td>
                                     <td>{{ $supplier->address }}</td>
-                                    <td>{{ $supplier->slug }}</td>
                                     <td>
                                         <a href="{{ route('admin.suppliers.edit', $supplier->id) }}" class="btn btn-warning text-white">Sửa</a>
                                         <form class="d-inline-block" method="POST" action="{{ route('admin.suppliers.destroy', $supplier->id) }}">

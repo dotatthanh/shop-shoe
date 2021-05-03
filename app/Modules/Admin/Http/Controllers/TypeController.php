@@ -7,7 +7,7 @@ use App\Models\Type;
 use App\Http\Controllers\Controller;
 use DB;
 
-class TypeController extends Controller
+class TypeController extends AppController
 {
     /**
      * Display a listing of the resource.

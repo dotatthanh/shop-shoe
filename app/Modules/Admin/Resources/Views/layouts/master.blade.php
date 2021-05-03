@@ -24,16 +24,13 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <script>
         const BASE_URL = "{{ url('/') }}";
         const BASE_API_URL = "{{ url('/api') }}";
     </script>
+    <script src="{{ asset('plugins/toastr/sweetalert2@10.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -53,6 +50,7 @@
 		
 		<!-- CONTENT -->
         <div class="content-wrapper">
+            @yield('breadcrumb')
             <section class="content">
                 @yield('content')
             </section>
@@ -73,9 +71,26 @@
     <script src="{{ asset('js/fastclick.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('plugins/select2/select2.min.js') }}"></script>
     <script src="{{ asset('modules/admin/js/common.js') }}"></script>
 
     @yield('script')
+
+    <script>
+        @if(Session::has('alert-success'))
+            Toast.fire({
+                icon: 'success',
+                title: "{{ Session::get('alert-success') }}"
+            })
+        @endif
+
+        @if(Session::has('alert-error'))
+            Toast.fire({
+                icon: 'error',
+                title: "{{ Session::get('alert-error') }}"
+            })
+        @endif
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,28 @@
+.swal2-popup.swal2-toast .swal2-title {
+    font-size: 13px !important;
+}
+
+.help-block {
+    color: red;
+    font-size: 12px;
+}
+
+.btn-random-discount-code {
+    cursor: pointer;
+    background: #5863b4 !important;
+    color: #fff;
+    transition: .3s ease-in-out;
+}
+
+.btn-random-discount-code:hover {
+    background: #394390 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #00c0ef !important;
+    border: 1px solid #00c0ef !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: red;
+}

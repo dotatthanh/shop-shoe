@@ -1,45 +1,49 @@
 <div class="row">
     <div class="col-md-9">
-        @include('admin::includes.form-title')
+        <div class="box">
+            <div class="box-body">
+                @include('admin::includes.form-title')
 
-        <!-- render image common -->
-        <div class="card-box box-render-image-common">
-            <div class="form-group product-avatar">
-                <label class="mb-0">{{ __('Product Images') }} </label>
-                {!! $errors->first('images', '<span class="help-block error">:message</span>') !!}
-                <div class="upload-list-img" id="uploadListImg">
-                    @php
-                        $images = old('images',  $product_images ?? []);
-                    @endphp
-                    @foreach ($images as $item)
-                        <div class="item">
-                            <img class="img-thumbnail" src="{{ $item }}">
-                            <input type="hidden" name="images[]" value="{{ $item }}">
-                            <span onclick="removeImgUpload(this)" class="remove-img">
-                                <i class="far fa-times-circle"></i><span></span>
-                            </span>
+                <!-- render image common -->
+                <div class="card-box box-render-image-common">
+                    <div class="form-group product-avatar">
+                        <label class="mb-0">{{ __('Product Images') }} </label>
+                        {!! $errors->first('images', '<span class="help-block error">:message</span>') !!}
+                        <div class="upload-list-img" id="uploadListImg">
+                            @php
+                                $images = old('images',  $product_images ?? []);
+                            @endphp
+                            @foreach ($images as $item)
+                                <div class="item">
+                                    <img class="img-thumbnail" src="{{ $item }}">
+                                    <input type="hidden" name="images[]" value="{{ $item }}">
+                                    <span onclick="removeImgUpload(this)" class="remove-img">
+                                        <i class="far fa-times-circle"></i><span></span>
+                                    </span>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                        <div class="text-center">
+                            <a href="javascript:void(0)" onclick="initMediaDiv('uploadListImg')"><b>{{ __('Select Image') }}</b></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <a href="javascript:void(0)" onclick="initMediaDiv('uploadListImg')"><b>{{ __('Select Image') }}</b></a>
+
+                <div class="card-box">
+                    @include('admin::includes.form-content', ['contentTitle' => __('Description')])
+
+                    <div class="form-group">
+                        <label>{{ (isset($specificationTitle)) ? $specificationTitle :__('Technical specifications') }}</label>
+                        {!! $errors->first('specification', '<span class="help-block error">:message</span>') !!}
+
+                        <div class="m-b-5">
+                            <button type="button" class="btn btn-light btn-add-images" onclick="initMediaEditor(specificationEditor)">
+                                <i class="fa fa-music" aria-hidden="true"></i> {{ __('Media') }}
+                            </button>
+                        </div>
+                        <textarea name="specification" class="form-control" id="specification" rows="5">{{ old('specification',  $dataEdit->specification ?? null) }}</textarea>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="card-box">
-            @include('admin::includes.form-content', ['contentTitle' => __('Description')])
-
-            <div class="form-group">
-                <label>{{ (isset($specificationTitle)) ? $specificationTitle :__('Technical specifications') }}</label>
-                {!! $errors->first('specification', '<span class="help-block error">:message</span>') !!}
-
-                <div class="m-b-5">
-                    <button type="button" class="btn btn-light btn-add-images" onclick="initMediaEditor(specificationEditor)">
-                        <i class="fa fa-music" aria-hidden="true"></i> {{ __('Media') }}
-                    </button>
-                </div>
-                <textarea name="specification" class="form-control" id="specification" rows="5">{{ old('specification',  $dataEdit->specification ?? null) }}</textarea>
             </div>
         </div>
     </div>
