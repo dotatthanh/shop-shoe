@@ -4,10 +4,11 @@ namespace App\Modules\Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\Controller;
 use DB;
 
-class CategoryController extends Controller
+class CategoryController extends AppController
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +17,10 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::paginate(10);
+        $categories = Category::paginate(PAGE_LIMIT);
 
         if ($request->search) {
-            $categories = Category::where('title', 'like', '%'.$request->search.'%')->paginate(10);
+            $categories = Category::where('title', 'like', '%'.$request->search.'%')->paginate(PAGE_LIMIT);
         }
 
         $data = [
@@ -46,7 +47,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -99,7 +100,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         DB::beginTransaction();
         try {

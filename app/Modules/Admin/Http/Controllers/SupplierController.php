@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Validator;
 
-class SupplierController extends Controller
+class SupplierController extends AppController
 {
     /**
      * Display a listing of the resource.

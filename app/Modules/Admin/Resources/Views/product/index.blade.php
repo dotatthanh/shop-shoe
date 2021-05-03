@@ -10,7 +10,7 @@
                         <div class="col-md-6 text-right">
                             <a href="{{ route('admin.product.create') }}" class="btn btn-success">
                                 <i class="fa fa-plus"></i>
-                                <span>Create</span>
+                                <span>Tạo mới</span>
                             </a>
                         </div>
                     </div>

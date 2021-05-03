@@ -1,6 +1,6 @@
 <div class="widget">
     <div class="widget__title">
-        <label class="mb-1">{{ __('Action') }}</label>
+        <label class="mb-1">Thao tác</label>
     </div>
     
     <div class="widget__body text-center">
@@ -10,7 +10,7 @@
         </button>
         <a href="{{ $routeIndex }}" class="btn btn-default mb-2">
             <i class="fa fa-undo-alt"></i>
-            {{ __('Back') }}
+            {{ __('Trở lại') }}
         </a>
     </div>
 </div>

@@ -19,7 +19,7 @@
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="{{ asset('/images/default.jpg') }}" class="user-image" alt="User Image">
-						<span class="hidden-xs">Administrator</span>
+						<span class="hidden-xs">{{ auth()->guard('admin')->user()->name }}</span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
@@ -27,8 +27,7 @@
 							<img src="{{ asset('/images/default.jpg') }}" class="img-circle" alt="User Image">
 
 							<p>
-								Aadministrator
-								<small>Member since Nov. 2012</small>
+								{{ auth()->guard('admin')->user()->name }}
 							</p>
 						</li>
 						<!-- Menu Body -->
@@ -49,10 +48,10 @@
 						<!-- Menu Footer-->
 						<li class="user-footer">
 							<div class="pull-left">
-								<a href="#" class="btn btn-default btn-flat">Profile</a>
+								<a href="#" class="btn btn-default btn-flat">Thông tin cá nhân</a>
 							</div>
 							<div class="pull-right">
-								<a href="#" class="btn btn-default btn-flat">Sign out</a>
+								<a href="#" class="btn btn-default btn-flat">Đăng xuất</a>
 							</div>
 						</li>
 					</ul>
