@@ -28,6 +28,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // Category
         Route::resource('categories', 'CategoryController');
+        // Supplier
         Route::resource('suppliers', 'SupplierController');
+        // Type
+        Route::resource('types', 'TypeController');
+        // Brand
+        Route::resource('brands', 'BrandController');
     });
 });

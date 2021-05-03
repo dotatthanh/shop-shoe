@@ -49,6 +49,18 @@
 					<span>Supplier</span>
 				</a>
 			</li>
+			<li>
+				<a href="{{ route('admin.types.index') }}">
+					<i class="fa fa-circle-o text-red"></i> 
+					<span>Type</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ route('admin.brands.index') }}">
+					<i class="fa fa-circle-o text-red"></i> 
+					<span>Brand</span>
+				</a>
+			</li>
 		</ul>
 	</section>
 	<!-- /.sidebar -->
