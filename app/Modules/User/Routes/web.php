@@ -11,6 +11,13 @@
 |
 */
 
+// login and register
+Route::get('/dang-ky', 'UserController@register')->name('register');
+Route::post('/dang-ky', 'UserController@postRegister')->name('submit-register');
+Route::get('/dang-nhap', 'UserController@login')->name('login');
+Route::post('/dang-nhap', 'UserController@postLogin')->name('submit-login');
+Route::get('/dang-xuat', 'UserController@logout')->name('logout');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/category', 'HomeController@category')->name('user.category');
 Route::get('/product-detail', 'HomeController@productDetail')->name('user.product-detail');
