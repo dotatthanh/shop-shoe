@@ -27,7 +27,6 @@ class MemberUpdateRequest extends FormRequest
             'username' => 'required',
             'name' => 'required',
             'email' => 'required',
-            'roles' => 'required',
         ];
     }
 }
