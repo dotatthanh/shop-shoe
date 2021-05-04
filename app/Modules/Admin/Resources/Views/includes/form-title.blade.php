@@ -1,7 +1,7 @@
 <div class="form-group">
     <label for="title">
-        {{ isset($title_name) ? $title_name : __('Title') }}
-        <small>({{ __('Total number of characters') }}: <span class="count_total"></span>)</small>
+        {{ isset($title_name) ? $title_name : __('Tiêu đề') }}
+        <small>({{ __('Tổng số ký tự') }}: <span class="count_total"></span>)</small>
         <span class="required">*</span>
     </label>
     <input 
@@ -17,7 +17,7 @@
 <div class="form-group">
     <label for="slug">
         {{ __('Slug') }}
-        <small>({{ __('Total number of characters') }} : <span class="count_total"></span>)</small>
+        <small>({{ __('Tổng số ký tự') }} : <span class="count_total"></span>)</small>
         <span class="required">*</span>
     </label>
     <input 

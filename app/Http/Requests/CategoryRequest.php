@@ -28,4 +28,12 @@ class CategoryRequest extends FormRequest
             'slug' => 'required',
         ];
     }
+
+    public function messages() 
+    {
+        return [
+            'title.required' => 'Tên danh mục là trường bắt buộc',
+            'slug.required' => 'Slug là trường bắt buộc',
+        ];
+    }
 }

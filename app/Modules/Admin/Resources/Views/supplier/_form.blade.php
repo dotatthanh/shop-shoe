@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">
-                        Phone
+                        Số điện thoại
                         <small>({{ __('Total number of characters') }}: <span class="count_total"></span>)</small>
                         <span class="required">*</span>
                     </label>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label for="address">
-                        Address
+                        Địa chỉ
                         <small>({{ __('Total number of characters') }}: <span class="count_total"></span>)</small>
                         <span class="required">*</span>
                     </label>

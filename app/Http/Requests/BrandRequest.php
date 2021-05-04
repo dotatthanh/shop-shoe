@@ -13,7 +13,7 @@ class BrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class BrandRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required',
+            'slug' => 'required',
+        ];
+    }
+
+    public function messages() 
+    {
+        return [
+            'title.required' => 'Tên danh mục là trường bắt buộc',
+            'slug.required' => 'Slug là trường bắt buộc',
         ];
     }
 }

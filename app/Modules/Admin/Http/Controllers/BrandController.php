@@ -4,6 +4,7 @@ namespace App\Modules\Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
 use DB;
 
@@ -46,7 +47,7 @@ class BrandController extends AppController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BrandRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -99,7 +100,7 @@ class BrandController extends AppController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, $id)
     {
         DB::beginTransaction();
         try {
