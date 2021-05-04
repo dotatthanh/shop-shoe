@@ -15,11 +15,7 @@
 @endsection
 
 @section('content')
-    <div class="box">
-        <div class="box-body">
-            <form class="form-discount-code" action="{{ route('admin.discount_code.update', $dataEdit->id) }}" method="POST" novalidate>
-                @include('admin::discount_code._form', ['routeType' => 'edit'])
-            </form>
-        </div>
-    </div>
+    <form class="form-discount-code" action="{{ route('admin.discount_code.update', $dataEdit->id) }}" method="POST" novalidate>
+        @include('admin::discount_code._form', ['routeType' => 'edit'])
+    </form>
 @endsection
