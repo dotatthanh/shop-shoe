@@ -10,7 +10,3 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('/', 'HomeController@index')->name('web.index');
-Route::get('/category', 'HomeController@category')->name('web.category');
-Route::get('/product-detail', 'HomeController@productDetail')->name('web.product-detail');
-Route::get('/order', 'HomeController@order')->name('web.order');

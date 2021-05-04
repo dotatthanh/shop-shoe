@@ -11,8 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'user'], function () {
-    Route::get('/', function () {
-        dd('This is the User module index page. Build something great!');
-    });
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/category', 'HomeController@category')->name('user.category');
+Route::get('/product-detail', 'HomeController@productDetail')->name('user.product-detail');
+Route::get('/order', 'HomeController@order')->name('user.order');

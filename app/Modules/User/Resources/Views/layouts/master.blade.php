@@ -13,11 +13,11 @@
     </head>
 
     <body>
-        @include('web::layouts.header')
+        @include('user::layouts.header')
 
         @yield('content')
 
-        @include('web::layouts.footer')
+        @include('user::layouts.footer')
 
         <script src="{{ asset('js/jquery-2.2.1.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>

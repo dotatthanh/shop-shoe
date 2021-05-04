@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/logout', 'AdminController@logout')->name('logout');
 
         // Trang chủ
+        Route::get('/admin', 'DashboardController@index')->name('dashboard');
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
         Route::group(['prefix' => 'product'], function () {
