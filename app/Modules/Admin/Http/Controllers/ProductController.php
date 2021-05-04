@@ -12,6 +12,8 @@ use App\Models\ProductImage;
 use App\Models\Size;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Http\Requests\ProductRequest;
+
 class ProductController extends AppController
 {
     public function index() {
@@ -37,8 +39,8 @@ class ProductController extends AppController
         return view('admin::product.create', $data);
     }
 
-    public function store(Request $request) {
-        dd($request->all());
+    public function store(ProductRequest $request) {
+        // dd($request->all());
         DB::beginTransaction();
         try {
             $product = Product::create([
