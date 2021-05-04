@@ -17,20 +17,16 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-3 col-xs-3">
 						<div class="slider-nav">
-							<img src="{{ asset('images/produc1.jpg') }}" alt="">
-							<img src="{{ asset('images/produc1.jpg') }}" alt="">
-							<img src="{{ asset('images/produc1.jpg') }}" alt="">
-							<img src="{{ asset('images/produc1.jpg') }}" alt="">
-							<img src="{{ asset('images/produc1.jpg') }}" alt="">
+							<img src="{{ asset('images/giay1.jpg') }}" alt="">
+							<img src="{{ asset('images/giay2.jpg') }}" alt="">
+							{{-- <img src="{{ asset('images/giay1.jpg') }}" alt=""> --}}
 						</div>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-9">
 						<div class="slider-for">
-							<img src="{{ asset('images/anh2-2.jpg') }}" alt="">
-							<img src="{{ asset('images/anh2-2.jpg') }}" alt="">
-							<img src="{{ asset('images/anh2-2.jpg') }}" alt="">
-							<img src="{{ asset('images/anh2-2.jpg') }}" alt="">
-							<img src="{{ asset('images/anh2-2.jpg') }}" alt="">
+							<img src="{{ asset('images/giay1.jpg') }}" alt="">
+							<img src="{{ asset('images/giay2.jpg') }}" alt="">
+							{{-- <img src="{{ asset('images/giay1.jpg') }}" alt=""> --}}
 						</div>
 					</div>
 				</div>
