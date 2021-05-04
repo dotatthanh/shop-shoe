@@ -193,7 +193,7 @@
                     </label>
                     <div class="row">
                         <div class="col-md-5 text-center">
-                            <label>Size: </label>
+                            <label>Tên size: </label>
                         </div>
                         <div class="col-md-5 text-center">
                             <label>Số lượng: </label>

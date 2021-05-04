@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->string('status')->nullable();
             $table->integer('is_hot')->nullable();
-            $table->string('price')->nullable();
+            $table->string('price');
             $table->string('sale_price')->nullable();
             $table->timestamps();
         });
