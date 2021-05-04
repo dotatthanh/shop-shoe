@@ -1,4 +1,4 @@
-@extends('web::layouts.master')
+@extends('user::layouts.master')
 
 @section('content')
 	<!-- 			Content			 -->

@@ -9,7 +9,7 @@
             {{ __('Lưu') }}
         </button>
         <a href="{{ $routeIndex }}" class="btn btn-default mb-2">
-            <i class="fa fa-undo-alt"></i>
+            <i class="fa fa-undo"></i>
             {{ __('Trở lại') }}
         </a>
     </div>

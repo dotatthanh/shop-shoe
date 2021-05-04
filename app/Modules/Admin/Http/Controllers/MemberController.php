@@ -44,6 +44,7 @@ class MemberController extends AppController
 
     public function store(MemberCreateRequest $request) {
         try {
+            DB::beginTransaction();
             $data = $request->all();
             $user = Admin::create(array_merge($data, [
                 'password' => bcrypt($data['password'])
@@ -62,8 +63,10 @@ class MemberController extends AppController
                     $user->givePermissionTo($permissionOld);
                 }
             }
+            DB::commit();
             return redirect()->route('admin.member.index')->with('alert-success','Tạo thành viên thành công!');
         } catch (Exception $e) {
+            DB::rollback();
             return redirect()->back()->with('alert-danger','Tạo thành viên thất bại!');
         }
     }
@@ -87,7 +90,6 @@ class MemberController extends AppController
             $data = $request->all();
             $roles = $request['roles'];
             $user->syncRoles($roles); 
-            dd($data['roles']);
             if(isset($data['roles'])){
                 foreach ($data['roles'] as $value) {
                     $role = Role::find($value);
@@ -118,6 +120,6 @@ class MemberController extends AppController
         $user->syncPermissions();
         $user->syncRoles();
         $user->delete();
-        return redirect()->route('users.index')->with('alert-success', 'Xóa thành viên thành công!');
+        return redirect()->route('admin.member.index')->with('alert-success', 'Xóa thành viên thành công!');
     }
 }

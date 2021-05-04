@@ -1,73 +1,34 @@
-@extends('web::layouts.master')
+@extends('user::layouts.master')
 
 @section('content')
 	<!-- 			Content			 -->
-	<div class="container p-top50 pad20">
-		<div class="row row20">
-			<div class="col-md-7 col-sm-7 col-xs-12 pad20">
-				<div class="slider-noibat">
-					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/anh-noi-bat.jpg')}}" alt=""></a></div>
-					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/anh-noi-bat.jpg')}}" alt=""></a></div>
-					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/anh-noi-bat.jpg')}}" alt=""></a></div>
-					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/anh-noi-bat.jpg')}}" alt=""></a></div>
-				</div>
-				<ul class="category">
-					<li><a href="#" title="">Kids</a></li>
-					<li><a href="#" title="">Men</a></li>
-					<li><a href="#" title="">Images</a></li>
-					<li><a href="#" title="">Teens</a></li>
-					<li><a href="#" title="">Women</a></li>
-					<li><a href="#" title="">Color</a></li>
-					<li><a href="#" title="">Logo</a></li>
-					<li><a href="#" title="">Phrase</a></li>
-				</ul>
-			</div>
-			<div class="col-md-5 col-sm-5 col-xs-12 pad20">
-				<div class="row row10">
-					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
-							<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-						</a>
-						<div class="shirt">
-							<a href="#" title="">ÁO</a>
+	
+	<!-- 			select price 			 -->
+	<div class="select">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<form action="#">
+						<div class="category-product">
+							<p>GIẦY JORDAN</p>
 						</div>
-					</div>
-					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
-							<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-						</a>
-						<div class="trousers">
-							<a href="#" title="">QUẦN</a>
+						<div class="price-range">
+							<p>KHOẢNG GIÁ</p>
+							<input type="number" min="0" name="from_price" value="0"> - <input type="number" min="0" name="to_price" value="20000000">
+							<button><i class="fa fa-caret-right" aria-hidden="true"></i></button>
 						</div>
-					</div>
-					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
-							<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-						</a>
-						<div class="shoes">
-							<a href="#" title="">GIẦY</a>
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
-							<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-						</a>
-						<div class="accessories">
-							<a href="#" title="">PHỤ KIỆN</a>
-						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- 			End select price 			 -->
 
+	
 	<!-- 			SP bán chạy -->
-	<div class="container p-top50">
-		<h2 class="title-category">
-			<a href="#" title="">SẢN PHẨM BÁN CHẠY</a>
-		</h2>
-		<div class="row p-top30">
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
+	<div class="container p-top20">
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
 				<a href="#" title="" class="c-img">
 					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
 				</a>
@@ -82,7 +43,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
 				<a href="#" title="" class="c-img">
 					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
 				</a>
@@ -97,7 +58,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
 				<a href="#" title="" class="c-img">
 					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
 				</a>
@@ -112,7 +73,67 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
+				<a href="#" title="" class="c-img">
+					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
+				</a>
+				<div class="info-product">
+					<h3 class="title-product">
+						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
+					</h3>
+					<span class="price">5.000.000 VNĐ</span>
+					<form action="#">
+						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+						<button class="add">THÊM VÀO GIỎ</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
+				<a href="#" title="" class="c-img">
+					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
+				</a>
+				<div class="info-product">
+					<h3 class="title-product">
+						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
+					</h3>
+					<span class="price">5.000.000 VNĐ</span>
+					<form action="#">
+						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+						<button class="add">THÊM VÀO GIỎ</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
+				<a href="#" title="" class="c-img">
+					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
+				</a>
+				<div class="info-product">
+					<h3 class="title-product">
+						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
+					</h3>
+					<span class="price">5.000.000 VNĐ</span>
+					<form action="#">
+						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+						<button class="add">THÊM VÀO GIỎ</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
+				<a href="#" title="" class="c-img">
+					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
+				</a>
+				<div class="info-product">
+					<h3 class="title-product">
+						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
+					</h3>
+					<span class="price">5.000.000 VNĐ</span>
+					<form action="#">
+						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+						<button class="add">THÊM VÀO GIỎ</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot p-bot50">
 				<a href="#" title="" class="c-img">
 					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
 				</a>
@@ -131,73 +152,19 @@
 	</div>
 	<!-- 			End SP bán chạy -->
 
-	<!-- 			SP Mới -->
-	<div class="container p-top50 p-bot50">
-		<h2 class="title-category bg-product-new">
-			<a href="#" title="">SẢN PHẨM MỚI</a>
-		</h2>
-		<div class="row p-top30">
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
+
+	<div class="container p-bot50">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="te-pagination">
+			          <strong>1</strong>
+			          <a href="#" title="">2</a>
+			          <a href="#" title="">...</a>
+			          <a href="#" title="">6</a>
+			          <a href="#" title="">Next <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 			End SP Mới -->
+	<!-- 			End Content			 -->
 @endsection
