@@ -16,7 +16,7 @@ class AdminSeederTable extends Seeder
                 'username' => 'admin',
                 'name' => 'Supper Admin',
                 'email' => 'admin@gmail.com',
-                'phone' => '0356746658',
+                // 'phone' => '0356746658',
                 'password' => bcrypt('admin@123'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
