@@ -3,12 +3,19 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="brand">
-					<a href="#" title="">
-						Đăng nhập
-					</a>
-					<a href="#" title="">
-						Đăng ký
-					</a>
+					@if (auth()->user())
+						<a href="javascript:void(0)">
+							Xin chào <b style="font-size: 16px">{{ auth()->user()->name }}</b>
+						</a>
+					@else
+						<a href="javascript:void(0)" onclick="showModalUser('login')">
+							Đăng nhập
+						</a>
+						<a href="javascript:void(0)" onclick="showModalUser('register')">
+							Đăng ký
+						</a>
+					@endif
+					
 					<a href="#" title="">
 						<i class="fa fa-facebook" aria-hidden="true"></i>
 					</a>
@@ -59,4 +66,7 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Popup register and login -->
+    @include('user::user.includes.modal-register-login')
 </header>

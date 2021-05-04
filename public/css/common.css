@@ -26,3 +26,191 @@
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
     color: red;
 }
+
+
+#modal-register-login {
+    transition: 0.5s ease-in-out;
+    padding-right: 17px !important;
+}
+
+#modal-register-login .modal-dialog {
+    max-height: calc(100% - 40px);
+    overflow-y: auto;
+    top: 24%;
+}
+
+#modal-register-login .modal-content {
+    position: relative;
+    border-radius: 0;
+}
+
+#modal-register-login .modal-content .btn-close-modal-user {
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 6px;
+    font-size: 23px;
+    color: #bbb7b7;
+    opacity: 1;
+}
+
+#modal-register-login .modal-content .btn-close-modal-user:hover {
+    color: gray;
+}
+
+#modal-register-login .modal-content .modal-body {
+    display: flex;
+    padding: 0;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-left {
+    width: 35%;
+    background: #f5f5f5;
+    padding: 15px;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right {
+    width: 65%;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register {
+    padding: 15px;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .nav-tabs {
+    border-bottom: 0;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .nav-tabs li a {
+    margin-right: 0px;
+    color: #7a7a7a;
+    border-radius: 0;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .nav-tabs .nav-link.active {
+    border: 1px solid gainsboro;
+    border-bottom: 1px solid #fff;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content {
+    border: 1px solid #dddddd;
+    padding: 15px;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .input-box:last-child {
+    border-bottom: 0;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .input-box {
+    margin-bottom: 20px;
+}
+
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .input-box .icon {
+    color: #31708f;
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    left: 4px;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .input-box .icon-lock {
+    font-size: 20px;
+    top: 8px;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .input-box input {
+    border: 0px !important;
+    height: 38px;
+    padding-left: 26px;
+    border-bottom: 1px solid #e9e9e9 !important;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .input-box input:focus {
+    border-color: #31708f !important;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .forgot-password {
+    color: #4c4a4a;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .forgot-password:hover {
+    color: #31708f;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .btn-group-login {
+    display: flex;
+    justify-content: space-between;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .btn-group-login .btn {
+    width: 49.5%;
+    color: #fff;
+    height: auto;
+    padding: 3px;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .btn-group-login .btn-facebook {
+    border-color: #43b7e8;
+    background: #43b7e8;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .btn-group-login .btn-facebook:hover {
+    background-color: #36a1cd;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .btn-group-login .btn-google {
+    border-color: #31708f;
+    background: #31708f;
+}
+
+#modal-register-login .modal-content .modal-body .modal-content-right .box-register .tab-content .btn-group-login .btn-google:hover {
+    background-color: #31708f;
+}
+
+#modal-register-login .icon {
+    background-color: #fff;
+    padding: 0;
+    position: absolute;
+    right: initial;
+}
+
+#modal-register-login .btn-register {
+    margin-top: 30px;
+    background: #31708f;
+    color: #fff;
+    padding: 9px;
+}
+
+#modal-register-login input {
+    width: 100%;
+}
+
+.position-relative {
+    position: relative;
+}
+
+#modal-register-login p {
+    line-height: 1.5;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.summery_error {
+    color: #d60b0b;
+    background: #de62624a;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.summery_success {
+    color: #153856;
+    background: #64de624a;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
