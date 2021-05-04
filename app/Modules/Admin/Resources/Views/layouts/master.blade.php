@@ -18,6 +18,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('css/_all-skins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
     <!-- Date Picker -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     <!-- jQuery 3 -->

@@ -6,7 +6,6 @@
                 <div class="form-group">
                     <label for="email">
                         Email
-                        <small>({{ __('Total number of characters') }}: <span class="count_total"></span>)</small>
                         <span class="required">*</span>
                     </label>
                     <input 
@@ -21,7 +20,6 @@
                 <div class="form-group">
                     <label for="phone">
                         Số điện thoại
-                        <small>({{ __('Total number of characters') }}: <span class="count_total"></span>)</small>
                         <span class="required">*</span>
                     </label>
                     <input 
@@ -37,7 +35,6 @@
                 <div class="form-group">
                     <label for="address">
                         Địa chỉ
-                        <small>({{ __('Total number of characters') }}: <span class="count_total"></span>)</small>
                         <span class="required">*</span>
                     </label>
                     <input 
