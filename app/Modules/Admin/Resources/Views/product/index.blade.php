@@ -46,6 +46,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Ảnh sản phẩm</th>
                                     <th>Mã SP</th>
                                     <th>Tên SP</th>
                                     <th>Danh mục</th>
@@ -62,6 +63,13 @@
                                 @foreach ($products as $product)
                                     <tr>
                                         <td>{{ $product->id }}</td>
+                                        <td>
+                                            @if ($product->image)
+                                                <div class="product-logo">
+                                                    <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" class="w-100 h-100">
+                                                </div>
+                                            @endif
+                                        </td>
                                         <td>{{ $product->sku }}</td>
                                         <td>{{ $product->title }}</td>
                                         <td>
@@ -95,7 +103,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $products->appends(['search' => $search])->links() }} --}}
+                        {{ $products->appends(['search' => $search])->links() }}
                     </div>
                 </div>
             </div>
