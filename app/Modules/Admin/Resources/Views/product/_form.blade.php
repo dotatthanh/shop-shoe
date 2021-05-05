@@ -164,7 +164,7 @@
                         @foreach ($suppliers as $supplier)
                             <option 
                                 value="{{ $supplier->id }}"
-                                @if ($dataEdit->supplier_id === $supplier->id)
+                                @if (isset($dataEdit->supplier_id) && $dataEdit->supplier_id === $supplier->id)
                                     selected
                                 @endif
                             >{{ $supplier->title }}</option>
@@ -180,7 +180,7 @@
                         @foreach ($categories as $category)
                             <option 
                                 value="{{ $category->id }}"
-                                @if (in_array($category->id, $product_categorie_ids))
+                                @if (isset($product_categorie_ids) && in_array($category->id, $product_categorie_ids))
                                     selected
                                 @endif
                             >{{ $category->title }}</option>
@@ -196,7 +196,7 @@
                         @foreach ($brands as $brand)
                             <option 
                                 value="{{ $brand->id }}"
-                                @if ($dataEdit->brand_id === $brand->id)
+                                @if (isset($dataEdit->brand_id) && $dataEdit->brand_id === $brand->id)
                                     selected
                                 @endif
                             >{{ $brand->title }}</option>

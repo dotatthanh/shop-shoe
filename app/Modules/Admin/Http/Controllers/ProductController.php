@@ -43,6 +43,7 @@ class ProductController extends AppController
         $suppliers = Supplier::all();
 
         $data = [
+            'dataEdit' => [],
             'brands' => $brands,
             'categories' => $categories,
             'suppliers' => $suppliers,

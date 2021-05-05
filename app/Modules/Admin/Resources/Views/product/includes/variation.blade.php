@@ -1,4 +1,4 @@
-<div class="row" style="margin-bottom: 10px">
+<div class="row" style="margin-bottom: 5px">
     <div class="col-md-5">
         <input 
             type="text" 
