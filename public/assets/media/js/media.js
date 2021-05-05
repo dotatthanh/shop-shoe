@@ -82,7 +82,7 @@ $('#insert-into-post').on('click', function(e) {
             let data = '<div class="item">' +
                     '<img class="img-thumbnail" src="'+src+'">' +
                     '<input type="hidden" name="images[]" value="'+src+'">' +
-                    '<span onclick="removeImgUpload(this)" class="remove-img"><i class="far fa-times-circle"></i><span></span></span>' +
+                    '<span onclick="removeImgUpload(this)" class="remove-img"><i class="fa fa-times-circle"></i><span></span></span>' +
                 '</div>';
             $('#'+currentIdDiv).append(data);
             jQuery(this).prop("checked", false);

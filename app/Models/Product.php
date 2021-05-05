@@ -31,15 +31,15 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductCategory', 'product_id', 'id');
     }
 
-    // public function product_suppliers() {
-    //     return $this->hasMany('App\Models\ProductSupplier', 'product_id', 'id');
-    // }
-
     public function supplier() {
         return $this->belongsTo('App\Models\Supplier');
     }
 
     public function brand() {
         return $this->belongsTo('App\Models\Brand');
+    }
+
+    public function sizes() {
+        return $this->hasMany('App\Models\Size', 'product_id', 'id');
     }
 }

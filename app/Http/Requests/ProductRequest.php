@@ -31,7 +31,6 @@ class ProductRequest extends FormRequest
             'image' => 'required',
             'price' => 'required|min:1',
             'sku' => 'required|max:255',
-
             'category_id' => 'required',
             'images' => 'required',
             'name' => 'required',
