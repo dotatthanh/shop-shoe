@@ -5,6 +5,7 @@ namespace App\Modules\User\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\ProfileWebRequest;
 use App\User;
 use Auth;
 use Hash;
@@ -12,11 +13,12 @@ use Illuminate\Support\Str;
 use DB;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class UserController extends AppController
 {
     private $user;
 
     public function __construct(User $user) {
+        parent::__construct();
         $this->user = $user;
     }
 
@@ -82,5 +84,21 @@ class UserController extends Controller
     public function logout() {
         auth()->guard('web')->logout();
         return redirect(route('home'));
+    }
+
+    public function profile() {
+        return view('user::user.profile');
+    }
+
+    public function updateProfile(ProfileWebRequest $request) {
+        $params = $request->all();
+        User::where('email', $params['email'])->update([
+            'name' => $params['name'],
+            'email' => $params['email'],
+            'phone' => $params['phone'],
+            'address' => $params['address'],
+        ]);
+
+        return redirect()->back()->with('alert-success', 'Cập nhật thông tin cá nhân thành công');
     }
 }

@@ -232,3 +232,7 @@
     width: 70px;
     height: 70px;
 }
+
+* {
+    line-height: 1.5 !important;
+}

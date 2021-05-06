@@ -3,27 +3,30 @@
 @section('content')
 	<!-- 			Content			 -->
 	<div class="container order">
-		<form action="#" method="">
+		<form action="{{ route('checkout') }}" method="post">
+			@csrf
 			<div class="row">
 				<div class="col-lg-7">
-					<h1 class="font-weight-bold title-order">THÔNG TIN HÓA ĐƠN</h1>
-					<div class="info-bill">
-					    <p>Họ và tên <span>*</span></p>
-					    <input type="text" class="" id="" name="">
-					
-					    <p>Số điện thoại <span>*</span></p>
-					    <input type="text" class="" id="" name="">
-					
-					    <p>Tỉnh/Thành <span>*</span></p>
-					    <select name="" id="" class="">
-					    	<option value="">1</option>
-					    	<option value="">1</option>
-					    	<option value="">1</option>
-					    </select>
-					
-					    <p>Địa chỉ <span>*</span></p>
-					    <input type="text" class="" id="" name="">
-					</div>
+					<h1 class="font-weight-bold title-order">ĐỊA CHỈ NHẬN HÀNG</h1>
+					<hr>
+					@if (auth()->user())
+						<div class="info-bill">
+							<p>Họ và tên: {{ auth()->user()->name }}</p>
+						
+							<p>Số điện thoại: {{ auth()->user()->phone }}</p>
+						
+							<p>Địa chỉ: {{ auth()->user()->address }}</p>
+							<a 
+								href="{{ route('profile') }}" 
+								style="text-align: center; color: blue; cursor: pointer; display: block"
+								target="_blank"
+							>Thay đổi địa chỉ nhận hàng</a>
+						</div>
+					@else
+						<p>Bạn chưa đăng nhập để có thể đặt hàng, 
+							<a href="javascript:void(0)" onclick="showModalUser('login')" style="color:blue">đăng nhập</a>
+							ngay</p>
+					@endif
 
 					{{-- <h2 class="title-order font-weight-bold m-top-25">VẬN CHUYỂN QUA</h2>
 					<div class="transport">
@@ -32,7 +35,8 @@
 				</div>
 
 				<div class="col-lg-5 review-order">
-					<h2 class="title-order font-weight-bold">XEM LẠI ĐƠN HÀNG</h2>
+					<h2 class="title-order font-weight-bold">ĐƠN HÀNG CỦA BẠN</h2>
+					<hr>
 					<table class="w-100">
 						<tr class="bg th">
 							<td>Tên sản phẩm</td>
@@ -45,7 +49,12 @@
 							<tr>
 								<td class="info-product-order">
 									<h3><a href="">{{ $product->name }}</a></h3>
-									<p class="font-weight-bold font-italic size-order">Size: <span class="font-weight-normal pad-l-10">{{ $product->options->size }}</span></p>
+									<p class="font-weight-bold font-italic size-order">
+										<span>Size: </span>
+										<span class="font-weight-normal pad-l-10">
+											{{ $product->options['size']['name'] }}
+										</span>
+									</p>
 								</td>
 								<td class="text-center">{{ $product->price }} ₫</td>
 								<td class="text-center">{{ $product->qty }}</td>
@@ -68,8 +77,12 @@
 					</table>
 
 					<p class="node-order">Ghi chú</p>
-					<textarea name="" id="" rows="7" class="w-100"></textarea>
-					<button type="submit" class="font-weight-bold">GỬI ĐẶT HÀNG</button>
+					<textarea name="note" id="" rows="7" class="w-100" class="form-control"></textarea>
+					@if (auth()->user())
+						<button type="submit" class="font-weight-bold">GỬI ĐẶT HÀNG</button>
+					@else
+						<button type="button" onclick="showModalUser('login')" class="font-weight-bold">GỬI ĐẶT HÀNG</button>
+					@endif
 				</div>
 			</div>
 		</form>	
