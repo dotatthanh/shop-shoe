@@ -17,10 +17,10 @@ class BrandController extends AppController
      */
     public function index(Request $request)
     {
-        $brands = Brand::paginate(10);
+        $brands = Brand::paginate(PAGE_LIMIT);
 
         if ($request->search) {
-            $brands = Brand::where('title', 'like', '%'.$request->search.'%')->paginate(10);
+            $brands = Brand::where('title', 'like', '%'.$request->search.'%')->paginate(PAGE_LIMIT);
         }
 
         $data = [

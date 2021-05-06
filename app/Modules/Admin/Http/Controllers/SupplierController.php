@@ -18,10 +18,10 @@ class SupplierController extends AppController
      */
     public function index(Request $request)
     {
-        $suppliers = Supplier::paginate(10);
+        $suppliers = Supplier::paginate(PAGE_LIMIT);
 
         if ($request->search) {
-            $suppliers = Supplier::where('title', 'like', '%'.$request->search.'%')->paginate(10);
+            $suppliers = Supplier::where('title', 'like', '%'.$request->search.'%')->paginate(PAGE_LIMIT);
         }
 
         $data = [
