@@ -5,6 +5,7 @@ namespace App\Modules\User\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -16,8 +17,16 @@ class HomeController extends Controller
 		return view('user::web.category');
 	}
 
-	public function productDetail () {
-		return view('user::web.product-detail');
+	public function productDetail ($id) {
+		$product = Product::findOrFail($id);
+		$products = Product::inRandomOrder()->limit(5)->get();
+
+		$data = [
+			'product' => $product,
+			'products' => $products,
+		];
+
+		return view('user::web.product-detail', $data);
 	}
 
 	public function order () {

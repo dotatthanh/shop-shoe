@@ -152,6 +152,7 @@
                             ])
                         </div>
                     </div>
+                    {!! $errors->first('image', '<span class="help-block error">:message</span>') !!}
                 </div>
             </div>
         </div>

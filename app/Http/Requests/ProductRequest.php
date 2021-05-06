@@ -30,11 +30,8 @@ class ProductRequest extends FormRequest
             'supplier_id' => 'required',
             'image' => 'required',
             'price' => 'required|min:1',
+            // 'sale_price' => 'required|min:1',
             'sku' => 'required|max:255',
-            'category_id' => 'required',
-            'images' => 'required',
-            'name' => 'required',
-            'quantity' => 'required|min:1',
         ];
     }
 
@@ -50,15 +47,10 @@ class ProductRequest extends FormRequest
             'image.required' => 'Ảnh sản phẩm là trường bắt buộc.',
             'price.required' => 'Giá bán là trường bắt buộc.',
             'price.min' => 'Giá bán nhỏ nhất bằng 1.',
+            // 'sale_price.required' => 'Giá khuyến mãi là trường bắt buộc.',
+            // 'sale_price.min' => 'Giá khuyến mãi nhỏ nhất bằng 1.',
             'sku.required' => 'Mã sản phẩm là trường bắt buộc.',
             'sku.max' => 'Mã sản phẩm không được phép quá 255 ký tự.',
-
-            'category_id.required' => 'Danh mục là trường bắt buộc.',
-            'images.required' => 'Ảnh chi tiết sản phẩm là trường bắt buộc.',
-            'name.required' => 'Tên size là trường bắt buộc.',
-            'name.max' => 'Tên size không được phép quá 255 ký tự.',
-            'quantity.required' => 'Số lượng sản phẩm là trường bắt buộc.',
-            'quantity.min' => 'Số lượng sản phẩm nhỏ nhất bằng 1.',
         ];
     }
 }

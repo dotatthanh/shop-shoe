@@ -833,6 +833,10 @@ footer form button{
   margin-left: 10px;
 }
 
+.float-right {
+  float: right;
+}
+
 
 .product-info h3{
   color: #fff;

@@ -17,7 +17,7 @@ class CreateSizesTable extends Migration
             $table->id();
             $table->integer('product_id');
             $table->string('name');
-            $table->string('quantity')->default(0);
+            $table->integer('quantity')->default(0);
             $table->timestamps();
         });
     }
