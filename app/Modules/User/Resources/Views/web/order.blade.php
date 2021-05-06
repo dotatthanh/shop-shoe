@@ -25,10 +25,10 @@
 					    <input type="text" class="" id="" name="">
 					</div>
 
-					<h2 class="title-order font-weight-bold m-top-25">VẬN CHUYỂN QUA</h2>
+					{{-- <h2 class="title-order font-weight-bold m-top-25">VẬN CHUYỂN QUA</h2>
 					<div class="transport">
 						<label><input type="radio" checked="checkked"><span class="pad-l-10">CHUYỂN PHÁT NHANH <span>0 ₫</span></span></label>
-					</div>
+					</div> --}}
 				</div>
 
 				<div class="col-lg-5 review-order">
@@ -40,47 +40,30 @@
 							<td class="text-center amount-order">Số lượng</td>
 							<td class="text-center total-money-order">Tổng số tiền</td>
 						</tr>
-						<tr>
-							<td class="info-product-order">
-								<h3><a href="">LD826 ĐẦM XÒE HỌA TIẾT HOA NỔI (ĐEN)</a></h3>
-								<p class="font-weight-bold font-italic color-order">Màu sắc: <span class="font-weight-normal pad-l-10">Đen</span></p>
-								<p class="font-weight-bold font-italic size-order">Size: <span class="font-weight-normal pad-l-10">S</span></p>
-							</td>
-							<td class="text-center">292.500 ₫</td>
-							<td class="text-center">1</td>
-							<td class="text-center">292.500 ₫</td>
-						</tr>
-						<tr>
-							<td class="info-product-order">
-								<h3><a href="">LD826 ĐẦM XÒE HỌA TIẾT HOA NỔI (ĐEN)</a></h3>
-								<p class="font-weight-bold font-italic color-order">Màu sắc: <span class="font-weight-normal pad-l-10">Đen</span></p>
-								<p class="font-weight-bold font-italic size-order">Size: <span class="font-weight-normal pad-l-10">S</span></p>
-							</td>
-							<td class="text-center">292.500 ₫</td>
-							<td class="text-center">1</td>
-							<td class="text-center">292.500 ₫</td>
-						</tr>
-						<tr>
-							<td class="info-product-order">
-								<h3><a href="">LD826 ĐẦM XÒE HỌA TIẾT HOA NỔI (ĐEN)</a></h3>
-								<p class="font-weight-bold font-italic color-order">Màu sắc: <span class="font-weight-normal pad-l-10">Đen</span></p>
-								<p class="font-weight-bold font-italic size-order">Size: <span class="font-weight-normal pad-l-10">S</span></p>
-							</td>
-							<td class="text-center">292.500 ₫</td>
-							<td class="text-center">1</td>
-							<td class="text-center">292.500 ₫</td>
-						</tr>
-						<tr class="bg">
+
+						@foreach ($cart as $product)
+							<tr>
+								<td class="info-product-order">
+									<h3><a href="">{{ $product->name }}</a></h3>
+									<p class="font-weight-bold font-italic size-order">Size: <span class="font-weight-normal pad-l-10">{{ $product->options->size }}</span></p>
+								</td>
+								<td class="text-center">{{ $product->price }} ₫</td>
+								<td class="text-center">{{ $product->qty }}</td>
+								<td class="text-center">{{ $product->price }} ₫</td>
+							</tr>
+						@endforeach
+
+						{{-- <tr class="bg">
 							<td colspan="3" class="text-right">Tổng số</td>
-							<td>292.500 ₫</td>
-						</tr>
-						<tr class="bg">
+							<td>{{ $total_money }} ₫</td>
+						</tr> --}}
+						{{-- <tr class="bg">
 							<td colspan="3" class="text-right">Vận chuyển qua (CHUYỂN PHÁT NHANH)</td>
 							<td>0 ₫</td>
-						</tr>
+						</tr> --}}
 						<tr class="bg">
 							<td colspan="3" class="text-right font-weight-bold">Tổng cộng</td>
-							<td class="font-weight-bold">292.500 ₫</td>
+							<td class="font-weight-bold text-center">{{ $total_money }} ₫</td>
 						</tr>
 					</table>
 
