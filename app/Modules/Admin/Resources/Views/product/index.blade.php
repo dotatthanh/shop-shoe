@@ -24,7 +24,7 @@
                                 <div class="box-body">
                                     <div class="form-group">
                                         <div class="col-sm-7">
-                                            <input type="text" name="search" class="form-control" placeholder="Từ khóa" value="{{ request()->search }}">
+                                            <input type="text" name="search" class="form-control" placeholder="Tìm kiếm theo tên, slug, giá bán" value="{{ request()->search }}">
                                         </div>
         
                                         <button type="submit" class="btn btn-success col-sm-2">Tìm kiếm</button>
@@ -95,7 +95,6 @@
                                             <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-warning text-white">Sửa</a>
                                             <form class="d-inline-block" method="POST" action="{{ route('admin.product.delete', $product->id) }}">
                                                 @csrf
-                                                @method('DELETE')
                                                 <button class="w-60px btn btn-danger" type="submit">Xóa</button>
                                             </form>
                                         </td>

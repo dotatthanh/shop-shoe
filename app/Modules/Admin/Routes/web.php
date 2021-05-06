@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('/store', 'ProductController@store')->name('product.store');
             Route::get('/edit/{id}', 'ProductController@edit')->name('product.edit');
             Route::post('/update/{id}', 'ProductController@update')->name('product.update');
-            Route::delete('/delete/{id}', 'ProductController@delete')->name('product.delete');
+            Route::post('/delete/{id}', 'ProductController@delete')->name('product.delete');
         });
 
         // Danh mục

@@ -20,5 +20,5 @@ Route::get('/dang-xuat', 'UserController@logout')->name('logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/category', 'HomeController@category')->name('user.category');
-Route::get('/product-detail', 'HomeController@productDetail')->name('user.product-detail');
+Route::get('/product-detail/{id}', 'HomeController@productDetail')->name('user.product-detail');
 Route::get('/order', 'HomeController@order')->name('user.order');

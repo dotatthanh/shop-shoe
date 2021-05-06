@@ -8,8 +8,8 @@
 				<div class="list-item">
 					<ul>
 						<li><a href="#" title=""><i class="fa fa-home" aria-hidden="true"></i></a></li>
-						<li><a href="#" title="">Áo</a></li>
-						<li><a href="#" title="">Short sleeve t-shirt</a></li>
+						<li><a href="#" title="">{{ $product->product_categories->first()->category->title }}</a></li>
+						<li><a href="#" title="">{{ $product->title }}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -17,37 +17,56 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-3 col-xs-3">
 						<div class="slider-nav">
-							<img src="{{ asset('images/giay1.jpg') }}" alt="">
-							<img src="{{ asset('images/giay2.jpg') }}" alt="">
-							{{-- <img src="{{ asset('images/giay1.jpg') }}" alt=""> --}}
+							@foreach ($product->product_images->take(3)->all() as $image_detail)
+								<img src="{!! $image_detail->url !!}" alt="">
+							@endforeach
 						</div>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-9">
 						<div class="slider-for">
-							<img src="{{ asset('images/giay1.jpg') }}" alt="">
-							<img src="{{ asset('images/giay2.jpg') }}" alt="">
-							{{-- <img src="{{ asset('images/giay1.jpg') }}" alt=""> --}}
+							@foreach ($product->product_images as $image_detail)
+								<img src="{!! $image_detail->url !!}" alt="">
+							@endforeach
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-5 col-sm-5 col-xs-12 product-detail p-bot20">
-				<form action="#">
-					<h2>SHORT SLEEVE T-SHIRT</h2>
+				<form action="#" method="POST">
+					@csrf
+					<h2>{{ $product->title }}</h2>
 					<div class="stt">
-						<p>Tình trạng:</p> <span>Còn hàng</span>
+						<p>Tình trạng:</p> <span id="status">{{ $product->sizes->first()->quantity > 0 ? 'Còn hàng' : 'Hết hàng'}}</span>
 					</div>
 					<div class="product-code">
-						<p>Mã SP:</p> <span>42027</span>
+						<p>Mã SP:</p> <span>{{ $product->sku }}</span>
 					</div>
-					<div class="price-product">
-						<p>Giá bán:</p> <span>280.000đ</span>
-					</div>
+
+					{{-- Check sale price --}}
+					@if ($product->sale_price)
+						<div class="price-product">
+							<p>Giá bán:</p> <span><del>{{ $product->price }}</del></span>
+						</div>
+						<div class="price-product">
+							<p>Giá khuyến mãi:</p> <span>{{ $product->sale_price }}</span>
+						</div>
+					@else
+						<div class="price-product">
+							<p>Giá bán:</p> <span>{{ $product->price }}</span>
+						</div>
+					@endif
+					{{-- End check --}}
+
 					<div class="size">
-						<p>Size:</p> <input type="text">  
+						<p>Size:</p> 
+						<select name="size" onchange="getQuantityProduct($(this).val())">
+							@foreach ($product->sizes as $size)
+								<option value="{{ $size->quantity }}">{{ $size->name }}</option>
+							@endforeach
+						</select>
 					</div>    
 					<div class="amount">
-						<p>Số lượng:</p> <input type="number" value="1" min="1">
+						<p>Số lượng còn:</p> <span id="quantity">{{ $product->sizes->first()->quantity }}</span>
 					</div>
 				</form>
 					<a href="#" title="" class="product-other">Sản phẩm khác</a>
@@ -62,11 +81,7 @@
 				<div class="border-bottom">
 					<h3>Thông tin sản phẩm</h3>
 					<div class="bg-color">
-						<p>The history of T-shirt is very interesting. The T-shirt has been a part of clothing since ancient Egypt. A type of modern T-shirt was developed in England in the end of 19th century. The idea of a T-shirt came to the USA during the World War II when American soldiers saw the cotton undershirts of European soldiers. That is a short story of T-shirts origin.</p>
-						<p>Actually this part of clothes is very unique and original. It is a way of self-expression because nowadays making some logo or phrase has become very popular. Obviously the T-shirts are the part of modern culture and they have a great influence on teens because of their freedom and epatage.</p>
-						<p>We are offering you our unique and original products. Our store has a largest choice of different high quality T-shirts. You can buy them at a fair price and get special discount which means that our shop is saving your money. We know that our products have such advantages as premium quality and original design.</p>
-						<p>And our products are the perfect combination of attractive design and real good content. It is really a product of a new generation. We promise that with our goods you will always be fashionable and stylish. For those people who don’t care about fashion we may offer some interesting design versions.</p>
-						<p>Well, don’t waste your time on hesitations and make you first purchase in our store right now!</p>
+						{!! $product->description !!}
 					</div>
 				</div>
 			</div>
@@ -80,69 +95,51 @@
 			<a href="#" title="">SẢN PHẨM KHÁC</a>
 		</h2>
 		<div class="row p-top30">
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg') }}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
+			@foreach ($products as $product)
+				<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
+					<a href="#" title="" class="c-img">
+						<img title="" src="{{ $product->image }}" alt="">
+					</a>
+					<div class="info-product">
+						<h3 class="title-product">
+							<a href="#" title="">{{ $product->title }}</a>
+						</h3>
+
+
+						@if ($product->sale_price)
+							<p class="price"><del>{{ $product->price }} VNĐ</del> <span class="float-right">{{ $product->sale_price }} VNĐ</span></p>
+							<span class="price">{{-- {{ $product->sale_price }} VNĐ --}}</span>
+						@else
+							<span class="price">{{ $product->price }} VNĐ</span>
+						@endif
+
+
+						<form action="#">
+							<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+							<button class="add">THÊM VÀO GIỎ</button>
+						</form>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg') }}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg') }}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg') }}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
 	<!-- 			End Phụ kiện -->
 
 	<!-- 			End Content			 -->
+@endsection
+@section('js')
+    <script type="text/javascript">
+    	function getQuantityProduct(quantity) {
+    		// Lấy số lượng hàng
+    		$(`#quantity`).text(quantity);
+
+    		// Set trạng thái
+    		if (quantity > 0) {
+    			$(`#status`).text('Còn hàng');
+    		}
+    		else {
+    			$(`#status`).text('Hết hàng');
+    		}
+    	}
+    </script>
 @endsection

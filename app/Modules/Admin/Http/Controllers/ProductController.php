@@ -27,7 +27,7 @@ class ProductController extends AppController
             });
         }
 
-        $products = $query->with('sizes')->paginate(PAGE_LIMIT);
+        $products = $query->with('sizes')->where('status', 'active')->paginate(PAGE_LIMIT);
 
         $data = [
             'products' => $products,
@@ -65,7 +65,7 @@ class ProductController extends AppController
                 'description' => $params['description'],
                 'price' => $params['price'],
                 'sale_price' => $params['sale_price'],
-                'status' => 1,
+                'status' => 'active',
             ]);
 
             foreach ($params['categories'] as $category_id) {
@@ -135,7 +135,7 @@ class ProductController extends AppController
                 'description' => $params['description'],
                 'price' => $params['price'],
                 'sale_price' => $params['sale_price'],
-                'status' => 1,
+                'status' => 'active',
             ]);
 
             if (isset($params['categories'])) {
@@ -175,6 +175,23 @@ class ProductController extends AppController
             DB::rollBack();
             throw new Exception($e->getMessage());
             return redirect()->back()->with('alert-error', 'Cập nhật sản phẩm thất bại!');
+        }
+    }
+
+    public function delete(Request $request, $id) {
+        $product = Product::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            $product->update([
+                'status' => 'deleted',
+            ]);
+
+            DB::commit();
+            return redirect()->route('admin.product.index')->with('alert-success', 'Xóa sản phẩm thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+            return redirect()->back()->with('alert-error', 'Xóa sản phẩm thất bại!');
         }
     }
 }
