@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div class="col-md-5 col-sm-5 col-xs-12 product-detail p-bot20">
-				<form action="#" method="POST">
+				<form action="{{ route('add-to-cart', $product->id) }}" method="POST">
 					@csrf
 					<h2>{{ $product->title }}</h2>
 					<div class="stt">
@@ -61,16 +61,19 @@
 						<p>Size:</p> 
 						<select name="size" onchange="getQuantityProduct($(this).val())">
 							@foreach ($product->sizes as $size)
-								<option value="{{ $size->quantity }}">{{ $size->name }}</option>
+								<option value="{{ $size }}">{{ $size->name }}</option>
 							@endforeach
 						</select>
 					</div>    
 					<div class="amount">
 						<p>Số lượng còn:</p> <span id="quantity">{{ $product->sizes->first()->quantity }}</span>
 					</div>
+
+					<div class="m-top20">
+						<a href="#" title="" class="product-other">Sản phẩm khác</a>
+						<button type="submit" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</button>
+					</div>
 				</form>
-					<a href="#" title="" class="product-other">Sản phẩm khác</a>
-					<a href="#" title="" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</a>
 			</div>
 		</div>
 	</div>
@@ -129,12 +132,14 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-    	function getQuantityProduct(quantity) {
+    	function getQuantityProduct(obj) {
+    		let size = JSON.parse(obj);
+
     		// Lấy số lượng hàng
-    		$(`#quantity`).text(quantity);
+    		$(`#quantity`).text(size.quantity);
 
     		// Set trạng thái
-    		if (quantity > 0) {
+    		if (size.quantity > 0) {
     			$(`#status`).text('Còn hàng');
     		}
     		else {

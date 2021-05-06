@@ -55,13 +55,13 @@
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12">
 				<div class="search">
-					<a href="order.html">(0) Sản phẩm</a>
-					<!-- <form action="#">
+					<a href="{{ route('user.order') }}">({{ $total_product }}) Sản phẩm</a>
+					{{-- <form action="#">
 						<input type="text">
 						<button href="#" title="">
 							<i class="fa fa-search" aria-hidden="true"></i>
 						</button>
-					</form> -->
+					</form> --}}
 				</div>
 			</div>
 		</div>
