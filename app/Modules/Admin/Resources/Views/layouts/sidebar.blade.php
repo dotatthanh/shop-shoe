@@ -23,6 +23,12 @@
 					<span>Sản phẩm</span>
 				</a>
 			</li>
+			<li class="{{ request()->segment(2) === 'order' ? 'active' : '' }}">
+				<a href="{{ route('admin.order.index') }}">
+					<i class="fa fa-cart-plus"></i> 
+					<span>Đơn hàng</span>
+				</a>
+			</li>
 			<li class="{{ request()->segment(2) === 'categories' ? 'active' : '' }}">
 				<a href="{{ route('admin.categories.index') }}">
 					<i class="fa fa-folder"></i> 

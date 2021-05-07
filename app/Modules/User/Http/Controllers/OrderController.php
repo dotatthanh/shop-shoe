@@ -8,7 +8,6 @@ use DB;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderProduct;
-use App\Models\OrderAddress;
 use App\Http\Controllers\Controller;
 
 class OrderController extends AppController
@@ -92,7 +91,6 @@ class OrderController extends AppController
             'weight' => 0,
             'options' => [
                 'size' => [
-                    'id' => $size->id,
                     'name' => $size->name
                 ]
             ]
@@ -113,17 +111,8 @@ class OrderController extends AppController
                 $orderCreated = Order::create([
                     'user_id' => auth()->user()->id,
                     'code' => 0,
-                    'fee_ship' => 0,
                     'total' => $cart->subtotal,
                     'status' => 'order'
-                ]);
-        
-                OrderAddress::create([
-                    'order_id' => $orderCreated->id,
-                    'name' => auth()->user()->name,
-                    'email' => auth()->user()->email,
-                    'phone' => auth()->user()->phone,
-                    'address' => auth()->user()->address
                 ]);
                 
                 if (isset($cart->options)) {
@@ -133,7 +122,6 @@ class OrderController extends AppController
                             'product_id' => $cart->id,
                             'quantity' => $cart->qty,
                             'price' => $cart->price,
-                            'size_id' => $cart->options['size']['id'],
                             'size_name' => $cart->options['size']['name'] 
                         ]);
                     }

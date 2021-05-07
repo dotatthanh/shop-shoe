@@ -16,11 +16,6 @@
 							<p>Số điện thoại: {{ auth()->user()->phone }}</p>
 						
 							<p>Địa chỉ: {{ auth()->user()->address }}</p>
-							<a 
-								href="{{ route('profile') }}" 
-								style="text-align: center; color: blue; cursor: pointer; display: block"
-								target="_blank"
-							>Thay đổi địa chỉ nhận hàng</a>
 						</div>
 					@else
 						<p>Bạn chưa đăng nhập để có thể đặt hàng, 

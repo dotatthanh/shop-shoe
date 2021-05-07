@@ -34,6 +34,8 @@ class UserController extends AppController
 
         $created = $this->user->create([
             'name' => $params['name'],
+            'phone' => $params['phone'],
+            'address' => $params['address'],
             'email' => $params['email'],
             'remember_token' => Str::random(60),
             'password' => Hash::make($params['password_confirm']),

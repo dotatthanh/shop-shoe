@@ -14,7 +14,6 @@ class AddColumnToOrderProductsTable extends Migration
     public function up()
     {
         Schema::table('order_products', function (Blueprint $table) {
-            $table->integer('size_id')->nullable();
             $table->string('size_name')->nullable();
         });
     }
@@ -27,7 +26,6 @@ class AddColumnToOrderProductsTable extends Migration
     public function down()
     {
         Schema::table('order_products', function (Blueprint $table) {
-            $table->dropColumn('size_id');
             $table->dropColumn('size_name');
         });
     }

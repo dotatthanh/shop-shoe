@@ -43,6 +43,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // Thương hiệu
         Route::resource('brands', 'BrandController');
 
+        // Đơn hàng
+        Route::resource('order', 'OrderController');
+        Route::post('/cancel/{order_id}', 'OrderController@cancel')->name('order.cancel');
+        Route::post('/change-status-order/{order_id}', 'OrderController@changeStatus')->name('order.change-status');
+
         // Mã giảm giá
         Route::group(['prefix' => 'discount_code'], function () {
             Route::get('/', 'DiscountCodeController@index')->name('discount_code.index');
@@ -54,7 +59,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/random', 'DiscountCodeController@randomCode');
         });
 
-        // Member
+        // Thành viên
         Route::group(['prefix' => 'member'], function(){
             Route::get('/', 'MemberController@index')->name('member.index');
             Route::get('/add', 'MemberController@create')->name('member.create');
@@ -64,7 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/destroy/{id}', 'MemberController@destroy')->name('member.destroy');
         });
 
-        // Role
+        // Vai trò
         Route::group(['prefix' => 'role'], function(){
             Route::get('/', 'RoleController@index')->name('role.index');
             Route::get('/create', 'RoleController@create')->name('role.create');
@@ -78,7 +83,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('/getPermissionOfRole', 'RoleController@getPermissionOfRole');
         });
 
-        // Permission
+        // Quyền hạn
         Route::group(['prefix' => 'permission'], function(){
             Route::get('/', 'PermissionController@index')->name('permission.index');
             Route::get('/create', 'PermissionController@create')->name('permission.create');

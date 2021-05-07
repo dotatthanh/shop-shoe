@@ -13,7 +13,10 @@ class OrderProduct extends Model
         'product_id',
         'quantity',
         'price',
-        'size_id',
         'size_name',
     ];
+
+    public function product() {
+        return $this->belongsTo('App\Models\Product', 'product_id', 'id');
+    }
 }

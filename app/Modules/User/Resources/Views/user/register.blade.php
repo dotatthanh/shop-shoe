@@ -17,6 +17,18 @@
     </div>
     <div class="input-box">
         <div class="position-relative">
+            <i class="fa fa-user icon"></i>
+            <input type="text" class="info" placeholder="{{ __('Số điện thoại') }}" value="{{ old('phone') }}" name="phone" required>
+        </div>
+    </div>
+    <div class="input-box">
+        <div class="position-relative">
+            <i class="fa fa-user icon"></i>
+            <input type="text" class="info" placeholder="{{ __('Địa chỉ') }}" value="{{ old('address') }}" name="address" required>
+        </div>
+    </div>
+    <div class="input-box">
+        <div class="position-relative">
             <i class="fa fa-lock icon icon-lock"></i>
             <input type="password" id="password" class="info" placeholder="{{ __('Mật khẩu') }}" name="password" required>
         </div>
@@ -35,6 +47,8 @@
         $(".form-register").validate({
             rules: {
                 name: "required",
+                phone: "required",
+                address: "required",
                 email: {
                     required: true,
                     email: true
@@ -53,6 +67,12 @@
             },
             messages: {
                 name: {
+                    required: "Trường này không được để trống"
+                },
+                phone: {
+                    required: "Trường này không được để trống"
+                },
+                address: {
                     required: "Trường này không được để trống"
                 },
                 email: {
@@ -79,6 +99,8 @@
                     data: {
                         name: $('input[name=name]').val(),
                         email: $('input[name=email]').val(),
+                        phone: $('input[name=phone]').val(),
+                        address: $('input[name=address]').val(),
                         password: $('input[name=password]').val(),
                         password_confirm: $('input[name=password_confirm]').val(),
                         current_path: $('input[name=current_path]').val(),

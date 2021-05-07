@@ -89,8 +89,8 @@
                                                 <p>{{ $item->quantity }}</p>
                                             @endforeach
                                         </td>
-                                        <td>{{ $product->price }} VNĐ</td>
-                                        <td>{{ $product->sale_price }} VNĐ</td>
+                                        <td>{{ number_format($product->price) }} VNĐ</td>
+                                        <td>{{ number_format($product->sale_price) }} VNĐ</td>
                                         <td>
                                             <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-warning text-white">Sửa</a>
                                             <form class="d-inline-block" method="POST" action="{{ route('admin.product.delete', $product->id) }}">
