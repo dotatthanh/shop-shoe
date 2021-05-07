@@ -376,11 +376,13 @@ ul.slick-dots li button {
   float: left;
   line-height: 40px;
 }
-.sp-hot .info-product form button{
+.sp-hot .info-product form button,
+.sp-hot .info-product form .href{
   display: inline-block;
   width: calc(100% - 40px);
   height: 40px;
   background: #000;
+  padding: 0;
 
 }
 /*      End Sản phẩm bán chạy       */

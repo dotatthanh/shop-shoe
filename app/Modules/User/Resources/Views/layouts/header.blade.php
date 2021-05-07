@@ -42,7 +42,7 @@
 					<button class="menu-btn" type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
 					<ul>
 						<li>
-							<a href="#" title="">Trang chủ</a>
+							<a href="{{ route('home') }}" title="">Trang chủ</a>
 						</li>
 						<li>
 							<a href="#" title="">Danh mục</a>

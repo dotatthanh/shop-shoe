@@ -21,9 +21,9 @@ Route::get('/dang-xuat', 'UserController@logout')->name('logout');
 // Route::post('/thay-doi-thong-tin', 'UserController@updateProfile')->name('profile.update');
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/category', 'HomeController@category')->name('user.category');
+Route::get('/collections/{slug}', 'HomeController@category')->name('user.category');
 
-Route::get('/product-detail/{id}', 'HomeController@productDetail')->name('user.product-detail');
+Route::get('/chi-tiet-san-pham/{slug}/{id}', 'HomeController@productDetail')->name('user.product-detail');
 
 Route::get('/order', 'OrderController@pageOrder');
 Route::post('/order', 'OrderController@order')->name('user.order');

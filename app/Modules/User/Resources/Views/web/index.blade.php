@@ -12,14 +12,11 @@
 					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/anh-noi-bat.jpg')}}" alt=""></a></div>
 				</div>
 				<ul class="category">
-					<li><a href="#" title="">Kids</a></li>
-					<li><a href="#" title="">Men</a></li>
-					<li><a href="#" title="">Images</a></li>
-					<li><a href="#" title="">Teens</a></li>
-					<li><a href="#" title="">Women</a></li>
-					<li><a href="#" title="">Color</a></li>
-					<li><a href="#" title="">Logo</a></li>
-					<li><a href="#" title="">Phrase</a></li>
+					@foreach ($categories as $category)
+						<li>
+							<a href="{{ route('user.category', $category->slug) }}" title="">{{ $category->title }}</a>
+						</li>
+					@endforeach
 				</ul>
 			</div>
 			<div class="col-md-5 col-sm-5 col-xs-12 pad20">
@@ -64,69 +61,12 @@
 	<!-- 			SP bán chạy -->
 	<div class="container p-top50">
 		<h2 class="title-category">
-			<a href="#" title="">SẢN PHẨM BÁN CHẠY</a>
+			<a href="javascript:void(0)" title="">SẢN PHẨM BÁN CHẠY</a>
 		</h2>
 		<div class="row p-top30">
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
+			@foreach ($products as $item)
+				@include('user::web.includes.product-item', ['item' => $item])
+			@endforeach
 		</div>
 	</div>
 	<!-- 			End SP bán chạy -->
@@ -134,69 +74,12 @@
 	<!-- 			SP Mới -->
 	<div class="container p-top50 p-bot50">
 		<h2 class="title-category bg-product-new">
-			<a href="#" title="">SẢN PHẨM MỚI</a>
+			<a href="javascript:void(0)" title="">SẢN PHẨM MỚI</a>
 		</h2>
 		<div class="row p-top30">
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-				<a href="#" title="" class="c-img">
-					<img title="" src="{{ asset('images/anh2-2.jpg')}}" alt="">
-				</a>
-				<div class="info-product">
-					<h3 class="title-product">
-						<a href="#" title="">SHORT SLEEVE T-SHIRT</a>
-					</h3>
-					<span class="price">5.000.000 VNĐ</span>
-					<form action="#">
-						<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-						<button class="add">THÊM VÀO GIỎ</button>
-					</form>
-				</div>
-			</div>
+			@foreach ($newProducts as $item)
+				@include('user::web.includes.product-item', ['item' => $item])
+			@endforeach
 		</div>
 	</div>
 	<!-- 			End SP Mới -->
