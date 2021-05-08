@@ -46,6 +46,7 @@ body{
 .p-top20{
   padding-top: 20px;
 }
+
 .mt-1 {
   padding-top: 10px;
 }
@@ -64,6 +65,9 @@ body{
 }
 .m-top20{
   margin-top: 20px;
+}
+.m-top10{
+  margin-top: 10px;
 }
 .m-top50{
   margin-top: 50px;
@@ -350,6 +354,13 @@ ul.slick-dots li button {
 }
 
 .price{
+  font-family: 'OpenSansB';
+  font-size: 23px;
+  color: red;
+  display: block;
+  padding-top: 10px;
+}
+.sale-price{
   font-family: 'OpenSansB';
   font-size: 23px;
   color: red;

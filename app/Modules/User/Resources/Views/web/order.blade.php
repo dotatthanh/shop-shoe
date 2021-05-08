@@ -11,11 +11,14 @@
 					<hr>
 					@if (auth()->user())
 						<div class="info-bill">
-							<p>Họ và tên: {{ auth()->user()->name }}</p>
+						    <p class="font-weight-bold">Họ và tên</p>
+						    <input disabled type="text" class="m-top10" id="" name="" value="{{ auth()->user()->name }}">
 						
-							<p>Số điện thoại: {{ auth()->user()->phone }}</p>
+						    <p class="font-weight-bold">Số điện thoại</p>
+						    <input disabled type="text" class="m-top10" id="" name="" value="{{ auth()->user()->phone }}">
 						
-							<p>Địa chỉ: {{ auth()->user()->address }}</p>
+						    <p class="font-weight-bold">Địa chỉ</p>
+						    <input disabled type="text" class="m-top10" id="" name="" value="{{ auth()->user()->address }}">
 						</div>
 					@else
 						<p>Bạn chưa đăng nhập để có thể đặt hàng, 

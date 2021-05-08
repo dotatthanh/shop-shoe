@@ -45,10 +45,10 @@
 					{{-- Check sale price --}}
 					@if ($product->sale_price)
 						<div class="price-product">
-							<p>Giá bán:</p> <span><del>{{ $product->price }}</del></span>
+							<p>Giá bán:</p> <span><del>{{ number_format($product->price) }} VND</del></span>
 						</div>
 						<div class="price-product">
-							<p>Giá khuyến mãi:</p> <span>{{ $product->sale_price }}</span>
+							<p>Giá khuyến mãi:</p> <span>{{ number_format($product->sale_price) }} VND</span>
 						</div>
 					@else
 						<div class="price-product">
@@ -98,31 +98,8 @@
 			<a href="#" title="">SẢN PHẨM KHÁC</a>
 		</h2>
 		<div class="row p-top30">
-			@foreach ($products as $product)
-				<div class="col-md-3 col-sm-3 col-xs-6 sp-hot">
-					<a href="#" title="" class="c-img">
-						<img title="" src="{{ $product->image }}" alt="">
-					</a>
-					<div class="info-product">
-						<h3 class="title-product">
-							<a href="#" title="">{{ $product->title }}</a>
-						</h3>
-
-
-						@if ($product->sale_price)
-							<p class="price"><del>{{ $product->price }} VNĐ</del> <span class="float-right">{{ $product->sale_price }} VNĐ</span></p>
-							<span class="price">{{-- {{ $product->sale_price }} VNĐ --}}</span>
-						@else
-							<span class="price">{{ $product->price }} VNĐ</span>
-						@endif
-
-
-						<form action="#">
-							<a href="#" title=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-							<button class="add">THÊM VÀO GIỎ</button>
-						</form>
-					</div>
-				</div>
+			@foreach ($products as $item)
+				@include('user::web.includes.product-item', ['item' => $item])
 			@endforeach
 		</div>
 	</div>
