@@ -27,11 +27,11 @@
                     <input type="date" name="end_date" class="form-control" value="{{ old('end_date', $dataEdit->end_date ?? null) }}">
                 </div>
         
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label>Loại</label>
                     <input type="text" name="type" class="form-control" value="{{ old('type', $dataEdit->type ?? null) }}">
                     {!! $errors->first('type', '<span class="help-block error">:message</span>') !!}
-                </div>
+                </div> --}}
         
                 @include('admin::includes.form-status')
             </div>

@@ -7,9 +7,9 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="list-item">
 					<ul>
-						<li><a href="#" title=""><i class="fa fa-home" aria-hidden="true"></i></a></li>
-						<li><a href="#" title="">{{ $product->product_categories->first()->category->title }}</a></li>
-						<li><a href="#" title="">{{ $product->title }}</a></li>
+						<li><a href="{{ route('home') }}" title=""><i class="fa fa-home" aria-hidden="true"></i></a></li>
+						<li><a href="{{ route('user.category', $product->product_categories->first()->category->slug) }}" title="">{{ $product->product_categories->first()->category->title }}</a></li>
+						<li><a href="{{ route('user.product-detail', ['slug' => $product->slug, 'id' => $product->id ]) }}" title="">{{ $product->title }}</a></li>
 					</ul>
 				</div>
 			</div>

@@ -59,12 +59,12 @@
 					<span>Mã giảm giá</span>
 				</a>
 			</li>
-			{{-- <li class="{{ request()->segment(2) === 'member' ? 'active' : '' }}">
+			<li class="{{ request()->segment(2) === 'member' ? 'active' : '' }}">
 				<a href="{{ route('admin.member.index') }}">
 					<i class="fa fa-user"></i>
 					<span>Thành viên</span>
 				</a>
-			</li> --}}
+			</li>
 			{{-- <li class="{{ request()->segment(2) === 'role' ? 'active' : '' }}">
 				<a href="{{ route('admin.role.index') }}">
 					<i class="fa fa-key"></i>

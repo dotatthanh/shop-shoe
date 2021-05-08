@@ -147,25 +147,31 @@ class OrderController extends AppController
                 }
             }
 
+            $orderCreated = Order::create([
+                'user_id' => auth()->user()->id,
+                'code' => time(),
+                'total' => $totalProduct,
+                'status' => 'order'
+            ]);
             foreach ($carts as $cart) {
-                $orderCreated = Order::create([
-                    'user_id' => auth()->user()->id,
-                    'code' => time(),
-                    'total' => $totalProduct,
-                    'status' => 'order'
-                ]);
                 
                 if (isset($cart->options)) {
-                    foreach ($cart->options as $item) {
-                        OrderProduct::create([
-                            'order_id' => $orderCreated->id,
-                            'product_id' => $cart->id,
-                            'quantity' => $cart->qty,
-                            'price' => $cart->price,
-                            'size_name' => $cart->options['size']['name'] 
-                        ]);
-                    }
+                    // foreach ($cart->options as $item) {
+                    OrderProduct::create([
+                        'order_id' => $orderCreated->id,
+                        'product_id' => $cart->id,
+                        'quantity' => $cart->qty,
+                        'price' => $cart->price,
+                        'size_name' => $cart->options['size']['name'] 
+                    ]);
+                    // }
                 }
+
+                $size = Size::findOrFail($cart->options->size['id']);
+                $calcQuantity = $size->quantity - $cart->qty;
+                $size->update([
+                    'quantity' => $calcQuantity
+                ]);
             }
             DB::commit();
             Cart::destroy();
