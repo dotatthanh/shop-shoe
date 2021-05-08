@@ -21,7 +21,7 @@
                         @include('user::web.cart.includes.table', ['carts' => $carts])
                     </tbody>
                 </table>
-                <a href="{{ route('user.order') }}" class="btn btn-success float-right">Thanh toán</a>
+                <a href="{{ route('user.order') }}" class="btn btn-success float-right">Đặt hàng</a>
             </div>
         </div>
     </div>
@@ -34,9 +34,15 @@
             process(rowId, quantity);
         }
 
-        function changeQuantityProduct (rowId) {
+        function changeQuantityProductPlus (rowId) {
             let quantity = $('.input-quantity').val();
             let newQuantity = parseInt(quantity) + 1;
+            process(rowId, newQuantity);
+        }
+
+        function changeQuantityProductMinus (rowId) {
+            let quantity = $('.input-quantity').val();
+            let newQuantity = parseInt(quantity) - 1;
             process(rowId, newQuantity);
         }
 
@@ -53,6 +59,12 @@
                         Toast.fire({
                             icon: 'success',
                             title: "Cập nhật giỏ hàng thành công!"
+                        })
+                    }
+                    else if (response.code === 400) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: `Cửa hàng chỉ còn lại ${response.quantity_product} sản phẩm!`
                         })
                     }
 

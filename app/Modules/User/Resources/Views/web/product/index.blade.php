@@ -7,7 +7,7 @@
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<form action="">
 						<div class="category-product">
-							<p>{{ $category->title }}</p>
+							<p>{{ $category['title'] }}</p>
 						</div>
 						<div class="price-range">
 							<p>KHOẢNG GIÁ</p>
