@@ -13,6 +13,11 @@
                 </div>
         
                 <div class="form-group">
+                    <label>% giảm giá</label>
+                    <input type="number" min="0" max="100" name="percent" class="form-control" value="{{ old('percent', $dataEdit->percent ?? null) }}">
+                </div>
+
+                <div class="form-group">
                     <label>Thời gian bắt đầu</label>
                     <input type="date" name="start_date" class="form-control" value="{{ old('start_date', $dataEdit->start_date ?? null) }}">
                 </div>

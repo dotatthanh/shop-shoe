@@ -47,6 +47,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Code</th>
+                                    <th>Giảm</th>
                                     <th>Thời gian bắt đầu</th>
                                     <th>Thời gian kết thúc</th>
                                     <th>Trạng thái</th>
@@ -59,6 +60,7 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->code }}</td>
+                                        <td>{{ $item->percent }} %</td>
                                         <td>{{ $item->start_date }}</td>
                                         <td>{{ $item->end_date }}</td>
                                         <td>
