@@ -5,6 +5,7 @@ namespace App\Modules\User\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ProductCategory;
 use Cart;
@@ -29,11 +30,21 @@ class HomeController extends AppController
 	}
 
 	public function category (Request $request, $slug) {
-		$category = Category::where('slug', $slug)->first();
-
-		$productIds = ProductCategory::where('category_id', $category->id)->get()->pluck('product_id');
-
-		$query = Product::whereIn('id', $productIds);
+		$categories = Category::all();
+		
+		if ($slug == 'san-pham-ban-chay') {
+			$category['title'] = 'Sản phẩm bán chạy';
+			$query = Product::where('is_hot', 1);
+		}
+		elseif ($slug == 'san-pham-moi') {
+			$category['title'] = 'Sản phẩm mới';
+			$query = Product::where('is_new', 1);
+		}
+		else {
+			$category = Category::where('slug', $slug)->first();
+			$productIds = ProductCategory::where('category_id', $category->id)->get()->pluck('product_id');
+			$query = Product::whereIn('id', $productIds);
+		}
 
 		if ($request->has('price_min') || $request->has('price_max')) {
 			$price_min = $request->price_min;
@@ -54,12 +65,14 @@ class HomeController extends AppController
     		'products' => $products,
     		'category' => $category,
     		'search' => $request->search,
+    		'categories' => $categories
     	];
 
 		return view('user::web.product.index', $data);
 	}
 
 	public function productDetail ($slug, $id) {
+		$categories = Category::all();
 		$product = Product::findOrFail($id);
 		$products = Product::inRandomOrder()->limit(5)->get();
 		$total_product = Cart::count();
@@ -68,6 +81,7 @@ class HomeController extends AppController
 			'product' => $product,
 			'products' => $products,
 			'total_product' => $total_product,
+			'categories' => $categories
 		];
 
 		return view('user::web.product..product-detail', $data);

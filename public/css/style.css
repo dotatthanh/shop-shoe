@@ -174,19 +174,22 @@ body{
     position: absolute;
     opacity: 0;
     z-index: -1;
-    width: 120px;
-    padding-top: 10px;
+    width: 170px;
     top: 70px;
+    border-radius: 4px;
+    background: #000;
   }
   .menu li ul li{
-    background: #fd030345;
     display: block;
+    border-bottom: 1px solid #ebebeb;
   }
 
   .menu li ul li a{
     padding-top: 10px;
     padding-bottom: 10px;
     display: block;
+    color: #fff;
+    padding-left: 10px;
   }
   .menu li ul li:hover a{
     color: #00b4ff;
@@ -196,7 +199,7 @@ body{
   .menu li:hover ul{
     z-index: 1;
     opacity: 1;
-    top: 100%;
+    top: 25px;
     display: block;
     transition: 0.2s;
   }

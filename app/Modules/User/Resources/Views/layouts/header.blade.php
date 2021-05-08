@@ -45,10 +45,21 @@
 							<a href="{{ route('home') }}" title="">Trang chủ</a>
 						</li>
 						<li>
-							<a href="#" title="">Danh mục</a>
+							<a href="javascript:void(0)" title="">Danh mục</a>
+							<i class="down fa fa-angle-down" aria-hidden="true"></i>
+							<ul>
+								@foreach ($categories as $category)
+								<li>
+									<a href="{{ route('user.category', $category->slug) }}" title="">{{ $category->title }}</a>
+								</li>
+								@endforeach
+							</ul>
 						</li>
 						<li>
-							<a href="#" title="">Giầy bán chạy</a>
+							<a href="{{ route('user.category', 'san-pham-ban-chay') }}" title="">Hàng bán chạy</a>
+						</li>
+						<li>
+							<a href="{{ route('user.category', 'san-pham-moi') }}" title="">Hàng mới</a>
 						</li>
 					</ul>
 				</div>

@@ -31,5 +31,21 @@
 
         @yield('js')
         @stack('js')
+
+        <script>
+        @if(Session::has('alert-success'))
+            Toast.fire({
+                icon: 'success',
+                title: "{{ Session::get('alert-success') }}"
+            })
+        @endif
+
+        @if(Session::has('alert-error'))
+            Toast.fire({
+                icon: 'error',
+                title: "{{ Session::get('alert-error') }}"
+            })
+        @endif
+    </script>
     </body>
 </html>

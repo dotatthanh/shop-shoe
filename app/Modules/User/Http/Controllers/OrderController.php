@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use Cart;
 use DB;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Order;
+use App\Models\Size;
 use App\Models\OrderProduct;
 use App\Http\Controllers\Controller;
 
 class OrderController extends AppController
 {
     public function order () {
+        $categories = Category::all();
         $cart = Cart::content();
         if ($cart->count() < 1) {
             return redirect()->route('home');
@@ -24,6 +27,7 @@ class OrderController extends AppController
     		'cart' => $cart,
     		'total_money' => $total_money,
     		'total_product' => $total_product,
+            'categories' => $categories,
     	];
 
 		return view('user::web.order.index', $data);
@@ -32,6 +36,13 @@ class OrderController extends AppController
 	public function addToCart (Request $request, $id) {
 		$size = json_decode($request->size);
 		$product = Product::findOrFail($id);
+
+        if (Cart::content()->where('id', $id)->first()) {
+            return redirect()->back()->with('alert-success', 'Giỏ hàng đã có sản phẩm!');
+        }
+        elseif ($size->quantity == 0) {
+            return redirect()->back()->with('alert-error', 'Sản phẩm đã hết hàng!');
+        }
 
 		$price = ($product->sale_price) ? $product->sale_price : $product->price;
 
@@ -43,7 +54,8 @@ class OrderController extends AppController
             'weight' => 0,
             'options' => [
                 'size' => [
-                    'name' => $size->name
+                    'name' => $size->name,
+                    'id' => $size->id
                 ],
                 'product_id' => $product->id,
                 'product_slug' => $product->slug,
@@ -52,10 +64,11 @@ class OrderController extends AppController
 
         $content = Cart::content();
 
-        return redirect()->back();
+        return redirect()->back()->with('alert-success', 'Đã thêm sản phẩm vào giỏ hàng!');
 	}
 
     public function showCart() {
+        $categories = Category::all();
         $carts = Cart::content();
 
         $total = 0;
@@ -64,6 +77,7 @@ class OrderController extends AppController
         }
         
         $data = [
+            'categories' => $categories,
             'carts' => $carts,
             'total' => $total,
         ];
@@ -72,7 +86,24 @@ class OrderController extends AppController
 
     public function updateCart(Request $request, $rowId) {
         $quantity = $request->quantity;
+
+        // SP trong gio
+        $cart = Cart::get($rowId);
+        // ID SP
+        $product_id = $cart->id;
+        // SL SP
+        $quantity_product = Size::findOrFail($cart->options->size['id'])->quantity;
+
+        if ($request->quantity > $quantity_product) {
+            return response()->json([
+                'code' => 400,
+                'quantity_product' => $quantity_product,
+            ]);
+        }
+
+
         Cart::update($rowId, $quantity);
+
 
         $carts = Cart::content();
         $total = 0;
@@ -84,6 +115,11 @@ class OrderController extends AppController
             'code' => 200,
             'html' => $view
         ]);
+    }
+
+    public function removeProductInCart($rowId){
+        Cart::remove($rowId);
+        return redirect()->back();
     }
 
     public function checkout(Request $request) {
