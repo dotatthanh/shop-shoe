@@ -20,6 +20,8 @@ class Product extends Model
         'price',
         'price_cost',
         'sale_price',
+        'is_hot',
+        'is_new',
         'sku',
     ];
 

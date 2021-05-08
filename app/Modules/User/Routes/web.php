@@ -27,4 +27,6 @@ Route::get('/chi-tiet-san-pham/{slug}/{id}', 'HomeController@productDetail')->na
 
 Route::get('/order', 'OrderController@order')->name('user.order');
 Route::post('/checkout', 'OrderController@checkout')->name('checkout');
+Route::get('/gio-hang', 'OrderController@showCart')->name('user.show-cart');
 Route::post('add-to-cart/{id}', 'OrderController@addToCart')->name('add-to-cart');
+Route::post('/update-cart/{rowId}', 'OrderController@updateCart')->name('update-cart');

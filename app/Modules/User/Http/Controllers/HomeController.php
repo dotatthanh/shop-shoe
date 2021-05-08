@@ -12,10 +12,9 @@ use Cart;
 class HomeController extends AppController
 {
     public function index () {
-    	// $total_product = Cart::count();
 		$products = Product::limit(4)->get();
-		$productHots = Product::limit(4)->get();
-		$newProducts = Product::limit(4)->get();
+		$productHots = Product::where('is_hot', PRODUCT_HOT)->limit(4)->get();
+		$newProducts = Product::where('is_new', NEW_PRODUCT)->limit(4)->get();
 		$categories = Category::all();
 		$total_product = Cart::count();
 
@@ -26,7 +25,7 @@ class HomeController extends AppController
     		'categories' => $categories,
     		'total_product' => $total_product,
     	];
-		return view('user::web.index', $data);
+		return view('user::web.home', $data);
 	}
 
 	public function category (Request $request, $slug) {
@@ -57,7 +56,7 @@ class HomeController extends AppController
     		'search' => $request->search,
     	];
 
-		return view('user::web.category', $data);
+		return view('user::web.product.index', $data);
 	}
 
 	public function productDetail ($slug, $id) {
@@ -71,7 +70,7 @@ class HomeController extends AppController
 			'total_product' => $total_product,
 		];
 
-		return view('user::web.product-detail', $data);
+		return view('user::web.product..product-detail', $data);
 	}
 
 	

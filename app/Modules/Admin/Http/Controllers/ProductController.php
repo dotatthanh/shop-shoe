@@ -65,6 +65,8 @@ class ProductController extends AppController
                 'description' => $params['description'],
                 'price' => $params['price'],
                 'sale_price' => $params['sale_price'],
+                'is_hot' => isset($params['is_hot']) ? PRODUCT_HOT : 0,
+                'is_new' => isset($params['is_new']) ? NEW_PRODUCT : 0,
                 'status' => 'active',
             ]);
 
@@ -135,6 +137,8 @@ class ProductController extends AppController
                 'description' => $params['description'],
                 'price' => $params['price'],
                 'sale_price' => $params['sale_price'],
+                'is_hot' => isset($params['is_hot']) ? PRODUCT_HOT : 0,
+                'is_new' => isset($params['is_new']) ? NEW_PRODUCT : 0,
                 'status' => 'active',
             ]);
 

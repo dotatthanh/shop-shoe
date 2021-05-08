@@ -205,6 +205,31 @@
                     </select>
                     {!! $errors->first('brand_id', '<span class="help-block error">:message</span>') !!}
                 </div>
+
+                <div class="form-group">
+                    <label for="brand_id">Sản phẩm nổi bật</label> <br/>
+                    <label class="switch switch-small">
+                        <input 
+                            type="checkbox" 
+                            name="is_hot"
+                            value="1"
+                            {{ isset($dataEdit->is_hot) && $dataEdit->is_hot ? 'checked' : '' }}
+                        >
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="brand_id">Sản phẩm mới về</label> <br/>
+                    <label class="switch switch-small">
+                        <input 
+                            type="checkbox" 
+                            name="is_new"
+                            value="1"
+                            {{ isset($dataEdit->is_new) && $dataEdit->is_new ? 'checked' : '' }}
+                        >
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
         </div>
     </div>

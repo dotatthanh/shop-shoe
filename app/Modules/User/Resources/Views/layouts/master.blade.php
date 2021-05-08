@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{ asset('slick/slick.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/common.css') }}" type="text/css">
         <script src="{{ asset('js/jquery-2.2.1.min.js') }}"></script>
+        <script src="{{ asset('plugins/toastr/sweetalert2@10.js') }}"></script>
         <script src="{{ asset('modules/user/js/common.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
     </head>

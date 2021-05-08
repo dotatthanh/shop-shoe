@@ -52,10 +52,12 @@
                                     <th>Danh mục</th>
                                     <th>Thương hiệu</th>
                                     <th>Nhà cung cấp</th>
-                                    <th>Size</th>
+                                    <th>Kích cỡ</th>
                                     <th>Số lượng</th>
                                     <th>Giá bán</th>
                                     <th>Giá KM</th>
+                                    <th>Nổi bật</th>
+                                    <th>Mới về</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -91,6 +93,20 @@
                                         </td>
                                         <td>{{ number_format($product->price) }} VNĐ</td>
                                         <td>{{ number_format($product->sale_price) }} VNĐ</td>
+                                        <td>
+                                            @if ($product->is_hot === PRODUCT_HOT)
+                                                <label class="label label-success">Có</label>
+                                            @else
+                                                <label class="label label-default">Không</label>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($product->is_new === NEW_PRODUCT)
+                                                <label class="label label-success">Có</label>
+                                            @else
+                                                <label class="label label-default">Không</label>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-warning text-white">Sửa</a>
                                             <form class="d-inline-block" method="POST" action="{{ route('admin.product.delete', $product->id) }}">

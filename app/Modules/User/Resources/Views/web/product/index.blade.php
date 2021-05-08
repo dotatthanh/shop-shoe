@@ -25,7 +25,7 @@
 	<div class="container p-top20">
 		<div class="row">
 			@foreach ($products as $item)
-				@include('user::web.includes.product-item', ['item' => $item])
+				@include('user::web.product.item', ['item' => $item])
 			@endforeach
 		</div>
 	</div>

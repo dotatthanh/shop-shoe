@@ -26,7 +26,7 @@ class OrderController extends AppController
     		'total_product' => $total_product,
     	];
 
-		return view('user::web.order', $data);
+		return view('user::web.order.index', $data);
 	}
 
 	public function addToCart (Request $request, $id) {
@@ -44,7 +44,9 @@ class OrderController extends AppController
             'options' => [
                 'size' => [
                     'name' => $size->name
-                ]
+                ],
+                'product_id' => $product->id,
+                'product_slug' => $product->slug,
             ]
         ]);
 
@@ -52,6 +54,37 @@ class OrderController extends AppController
 
         return redirect()->back();
 	}
+
+    public function showCart() {
+        $carts = Cart::content();
+
+        $total = 0;
+        foreach ($carts as $item) {
+            $total += $item->qty*$item->price;
+        }
+        
+        $data = [
+            'carts' => $carts,
+            'total' => $total,
+        ];
+        return view('user::web.cart.index', $data);
+    }
+
+    public function updateCart(Request $request, $rowId) {
+        $quantity = $request->quantity;
+        Cart::update($rowId, $quantity);
+
+        $carts = Cart::content();
+        $total = 0;
+        foreach ($carts as $item) {
+            $total += $item->qty*$item->price;
+        }
+        $view = view('user::web.cart.includes.table', compact('carts', 'total'))->render();
+        return response()->json([
+            'code' => 200,
+            'html' => $view
+        ]);
+    }
 
     public function checkout(Request $request) {
         try{

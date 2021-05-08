@@ -64,8 +64,8 @@
 			<a href="javascript:void(0)" title="">SẢN PHẨM BÁN CHẠY</a>
 		</h2>
 		<div class="row p-top30">
-			@foreach ($products as $item)
-				@include('user::web.includes.product-item', ['item' => $item])
+			@foreach ($productHots as $item)
+				@include('user::web.product.item', ['item' => $item])
 			@endforeach
 		</div>
 	</div>
@@ -78,7 +78,7 @@
 		</h2>
 		<div class="row p-top30">
 			@foreach ($newProducts as $item)
-				@include('user::web.includes.product-item', ['item' => $item])
+				@include('user::web.product.item', ['item' => $item])
 			@endforeach
 		</div>
 	</div>

@@ -55,7 +55,7 @@
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12">
 				<div class="search">
-					<a href="{{ route('user.order') }}">({{ $total_product }}) Sản phẩm</a>
+					<a href="{{ route('user.show-cart') }}">({{ $total_product }}) Sản phẩm</a>
 					{{-- <form action="#">
 						<input type="text">
 						<button href="#" title="">
