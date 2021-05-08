@@ -6,9 +6,9 @@
 		<div class="row row20">
 			<div class="col-md-7 col-sm-7 col-xs-12 pad20">
 				<div class="slider-noibat">
-					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/slider1.jpg')}}" alt=""></a></div>
-					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/slider2.jpg')}}" alt=""></a></div>
-					<div><a href="#" class="c-img" title=""><img title="" src="{{ asset('images/slider3.jpg')}}" alt=""></a></div>
+					<div><a href="javascript:void(0)" class="c-img" title=""><img title="" src="{{ asset('images/slider1.jpg')}}" alt=""></a></div>
+					<div><a href="javascript:void(0)" class="c-img" title=""><img title="" src="{{ asset('images/slider2.jpg')}}" alt=""></a></div>
+					<div><a href="javascript:void(0)" class="c-img" title=""><img title="" src="{{ asset('images/slider3.jpg')}}" alt=""></a></div>
 				</div>
 				<ul class="category">
 					@foreach ($categories as $category)
@@ -21,35 +21,35 @@
 			<div class="col-md-5 col-sm-5 col-xs-12 pad20">
 				<div class="row row10">
 					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
+						<a href="https://www.adidas.com.vn/vi" target="_blank" title="" class="c-img">
 							<img title="" src="{{ asset('images/adidas.png')}}" alt="">
 						</a>
 						<div class="shirt">
-							<a href="#" title="">Adidas</a>
+							<a href="https://www.adidas.com.vn/vi" target="_blank" title="">Adidas</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
+						<a href="https://us.puma.com/" target="_blank" title="" class="c-img">
 							<img title="" src="{{ asset('images/puma.png')}}" alt="">
 						</a>
 						<div class="trousers">
-							<a href="#" title="">Puma</a>
+							<a href="https://us.puma.com/" target="_blank" title="">Puma</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
+						<a href="https://www.nike.com/vn/" target="_blank" title="" class="c-img">
 							<img title="" src="{{ asset('images/nike.jpg')}}" alt="">
 						</a>
 						<div class="shoes">
-							<a href="#" title="">Nike</a>
+							<a href="https://www.nike.com/vn/" target="_blank" title="">Nike</a>
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6 fashions pad10">
-						<a href="#" title="" class="c-img">
+						<a href="https://www.converse.com.au/" target="_blank" title="" class="c-img">
 							<img title="" src="{{ asset('images/converse.png')}}" alt="">
 						</a>
 						<div class="accessories">
-							<a href="#" title="">Converse</a>
+							<a href="https://www.converse.com.au/" target="_blank" title="">Converse</a>
 						</div>
 					</div>
 				</div>
