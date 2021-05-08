@@ -135,15 +135,19 @@ class OrderController extends AppController
             $params = $request->all();
             DB::beginTransaction();
             $carts = Cart::content();
+            $totalProduct = 0;
 
             foreach ($carts as $cart) {
-                $totalProduct = $cart->price;
                 if (isset($params['code_sale'])) {
                     $percent = DiscountCode::where('code', $params['code_sale'])->first()->percent;
     
-                    $totalProduct = $cart->price - ($cart->price * $percent / 100);
+                    $totalProduct += $cart->price*$cart->qty - ($cart->price * $cart->qty * $percent / 100);
+                } else {
+                    $totalProduct += $cart->price * $cart->qty;
                 }
+            }
 
+            foreach ($carts as $cart) {
                 $orderCreated = Order::create([
                     'user_id' => auth()->user()->id,
                     'code' => time(),
