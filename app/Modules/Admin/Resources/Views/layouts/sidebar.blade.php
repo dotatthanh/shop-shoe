@@ -59,13 +59,13 @@
 					<span>Mã giảm giá</span>
 				</a>
 			</li>
-			<li class="{{ request()->segment(2) === 'member' ? 'active' : '' }}">
+			{{-- <li class="{{ request()->segment(2) === 'member' ? 'active' : '' }}">
 				<a href="{{ route('admin.member.index') }}">
 					<i class="fa fa-user"></i>
 					<span>Thành viên</span>
 				</a>
-			</li>
-			<li class="{{ request()->segment(2) === 'role' ? 'active' : '' }}">
+			</li> --}}
+			{{-- <li class="{{ request()->segment(2) === 'role' ? 'active' : '' }}">
 				<a href="{{ route('admin.role.index') }}">
 					<i class="fa fa-key"></i>
 					<span>Vai trò</span>
@@ -76,7 +76,7 @@
 					<i class="fa fa-user-secret"></i>
 					<span>Quyền hạn</span>
 				</a>
-			</li>
+			</li> --}}
 		</ul>
 	</section>
 	<!-- /.sidebar -->

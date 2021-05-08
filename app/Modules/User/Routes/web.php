@@ -25,7 +25,6 @@ Route::get('/collections/{slug}', 'HomeController@category')->name('user.categor
 
 Route::get('/chi-tiet-san-pham/{slug}/{id}', 'HomeController@productDetail')->name('user.product-detail');
 
-Route::get('/order', 'OrderController@pageOrder');
-Route::post('/order', 'OrderController@order')->name('user.order');
+Route::get('/order', 'OrderController@order')->name('user.order');
 Route::post('/checkout', 'OrderController@checkout')->name('checkout');
 Route::post('add-to-cart/{id}', 'OrderController@addToCart')->name('add-to-cart');

@@ -66,7 +66,7 @@
                                     <td>
                                         @if (isset($item->order_products))
                                             @foreach ($item->order_products as $order)
-                                                <a href="{{ route('user.product-detail', $order->product->id) }}" target="_blank">{{ $order->product->title }}</a>
+                                                <a href="{{ route('user.product-detail', ['slug' => $order->product->slug, 'id' => $order->product->id]) }}" target="_blank">{{ $order->product->title }}</a>
                                                 <p>(Kích cỡ: {{ $order->size_name }})</p>
                                             @endforeach
                                         @endif
@@ -80,7 +80,7 @@
                                             <label class="label label-primary change-status-order" data-id="{{ $item->id }}" data-status="complete">Đang vận chuyển</label>
                                         @endif
                                         @if ($item->status === 'complete')
-                                            <label class="label label-success change-status-order" data-id="{{ $item->id }}" data-status="order">Hoàn thành</label>
+                                            <label class="label label-success" data-id="{{ $item->id }}" data-status="order">Hoàn thành</label>
                                         @endif
                                         @if ($item->status === 'cancel')
                                             <label class="label label-danger">Đã hủy</label>

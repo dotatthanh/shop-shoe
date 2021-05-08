@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends AppController
 {
-    public function pageOrder () {
+    public function order () {
         $cart = Cart::content();
         if ($cart->count() < 1) {
             return redirect()->route('home');
@@ -27,54 +27,6 @@ class OrderController extends AppController
     	];
 
 		return view('user::web.order', $data);
-	}
-
-	public function order (Request $request) {
-		// if(Cart::count() < 1)
-  //       {
-  //           return redirect()->back()->with('notificationOrderFail', 'Đặt hàng thất bại! Giỏ hàng của bạn chưa có sản phẩm!');
-  //       }
-  //       else
-  //       {
-  //           $customer = Customer::create($request->all());
-
-  //           $content = Cart::content();
-  //           $test = array();
-  //           foreach ($content as $key) {
-  //               $order = new Order;
-  //               $order -> book_id = $key->id;
-  //               $order -> customer_id = $customer->id;
-  //               $order -> price = $key->price;
-  //               $order -> amount = $key->qty;
-  //               $order -> save();
-
-  //               $book = Book::find($key->id);
-  //               $book->amount = $book->amount - $key->qty;
-  //               $book->save();
-  //           }
-
-  //           Cart::destroy();
-            
-  //           return redirect()->back()->with('notificationOrder', 'Đặt hàng thành công! Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của chúng tôi');;
-  //       }
-
-
-
-
-
-
-
-		// $total_product = Cart::count();
-  //   	$cart = Cart::content();
-  //       $total_money = Cart::subtotal(0,",",".",".");
-
-  //   	$data = [
-  //   		'cart' => $cart,
-  //   		'total_money' => $total_money,
-  //   		'total_product' => $total_product,
-  //   	];
-
-		// return view('user::web.order', $data);
 	}
 
 	public function addToCart (Request $request, $id) {
@@ -134,6 +86,5 @@ class OrderController extends AppController
             DB::rollback();
             return redirect()->back()->with('alert-danger','Mua hàng thất bại!');
         }
-        
     }
 }

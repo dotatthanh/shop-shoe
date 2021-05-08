@@ -17,12 +17,14 @@ class HomeController extends AppController
 		$productHots = Product::limit(4)->get();
 		$newProducts = Product::limit(4)->get();
 		$categories = Category::all();
+		$total_product = Cart::count();
 
     	$data = [
     		'products' => $products,
     		'productHots' => $productHots,
     		'newProducts' => $newProducts,
     		'categories' => $categories,
+    		'total_product' => $total_product,
     	];
 		return view('user::web.index', $data);
 	}
@@ -61,10 +63,12 @@ class HomeController extends AppController
 	public function productDetail ($slug, $id) {
 		$product = Product::findOrFail($id);
 		$products = Product::inRandomOrder()->limit(5)->get();
+		$total_product = Cart::count();
 
 		$data = [
 			'product' => $product,
 			'products' => $products,
+			'total_product' => $total_product,
 		];
 
 		return view('user::web.product-detail', $data);
