@@ -75,11 +75,21 @@
 					</table>
 
 					<p class="node-order">Ghi chú</p>
-					<textarea name="note" id="" rows="7" class="w-100" class="form-control"></textarea>
+					<textarea name="note" id="" rows="7" class="w-100 form-control"></textarea>
+
+					@if (isset($codeSale) && $codeSale->count() > 0)
+						<p class="node-order">
+							<span>Mã giảm giá: </span>
+							<span class="required">{{ $codeSale->code }} - Giảm {{ $codeSale->percent }}%</span>	
+						</p> <br/>
+						<div class="input-group">
+							<input type="text" class="form-control" name="code_sale" placeholder="Nhập mã giảm giá">
+						</div>
+					@endif
 					@if (auth()->user())
-						<button type="submit" class="font-weight-bold">GỬI ĐẶT HÀNG</button>
+						<button type="submit" class="font-weight-bold mt-3">GỬI ĐẶT HÀNG</button>
 					@else
-						<button type="button" onclick="showModalUser('login')" class="font-weight-bold">GỬI ĐẶT HÀNG</button>
+						<button type="button" onclick="showModalUser('login')" class="font-weight-bold mt-3">GỬI ĐẶT HÀNG</button>
 					@endif
 				</div>
 			</div>

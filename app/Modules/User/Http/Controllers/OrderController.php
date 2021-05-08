@@ -10,6 +10,8 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Size;
 use App\Models\OrderProduct;
+use App\Models\DiscountCode;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 
 class OrderController extends AppController
@@ -22,12 +24,16 @@ class OrderController extends AppController
         }
 		$total_product = Cart::count();
         $total_money = Cart::subtotal(0,",",".",".");
+        $codeSale = DiscountCode::whereDate('start_date', '<=', date('Y-m-d'))
+            ->whereDate('end_date', '>=', date('Y-m-d'))
+            ->first();
 
     	$data = [
     		'cart' => $cart,
     		'total_money' => $total_money,
     		'total_product' => $total_product,
             'categories' => $categories,
+            'codeSale' => $codeSale,
     	];
 
 		return view('user::web.order.index', $data);
@@ -70,6 +76,7 @@ class OrderController extends AppController
     public function showCart() {
         $categories = Category::all();
         $carts = Cart::content();
+        $total_product = Cart::count();
 
         $total = 0;
         foreach ($carts as $item) {
@@ -79,6 +86,7 @@ class OrderController extends AppController
         $data = [
             'categories' => $categories,
             'carts' => $carts,
+            'total_product' => $total_product,
             'total' => $total,
         ];
         return view('user::web.cart.index', $data);
@@ -101,11 +109,10 @@ class OrderController extends AppController
             ]);
         }
 
-
         Cart::update($rowId, $quantity);
 
-
         $carts = Cart::content();
+        $totalProduct = Cart::count();
         $total = 0;
         foreach ($carts as $item) {
             $total += $item->qty*$item->price;
@@ -113,7 +120,8 @@ class OrderController extends AppController
         $view = view('user::web.cart.includes.table', compact('carts', 'total'))->render();
         return response()->json([
             'code' => 200,
-            'html' => $view
+            'html' => $view,
+            'totalProduct' => $totalProduct,
         ]);
     }
 
@@ -127,12 +135,23 @@ class OrderController extends AppController
             $params = $request->all();
             DB::beginTransaction();
             $carts = Cart::content();
+            $totalProduct = 0;
+
+            foreach ($carts as $cart) {
+                if (isset($params['code_sale'])) {
+                    $percent = DiscountCode::where('code', $params['code_sale'])->first()->percent;
+    
+                    $totalProduct += $cart->price*$cart->qty - ($cart->price * $cart->qty * $percent / 100);
+                } else {
+                    $totalProduct += $cart->price * $cart->qty;
+                }
+            }
 
             foreach ($carts as $cart) {
                 $orderCreated = Order::create([
                     'user_id' => auth()->user()->id,
-                    'code' => 0,
-                    'total' => $cart->subtotal,
+                    'code' => time(),
+                    'total' => $totalProduct,
                     'status' => 'order'
                 ]);
                 

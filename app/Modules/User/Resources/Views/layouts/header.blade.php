@@ -66,18 +66,11 @@
 			</div>
 			<div class="col-md-3 col-sm-3 col-xs-12">
 				<div class="search">
-					<a href="{{ route('user.show-cart') }}">({{ $total_product }}) Sản phẩm</a>
-					{{-- <form action="#">
-						<input type="text">
-						<button href="#" title="">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</button>
-					</form> --}}
+					<a href="{{ route('user.show-cart') }}">(<span class="totalProduct">{{ $total_product }}</span>) Sản phẩm</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Popup register and login -->
     @include('user::user.includes.modal-register-login')
 </header>

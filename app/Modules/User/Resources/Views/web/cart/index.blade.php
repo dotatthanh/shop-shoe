@@ -60,6 +60,8 @@
                             icon: 'success',
                             title: "Cập nhật giỏ hàng thành công!"
                         })
+
+                        $('header .totalProduct').text(response.totalProduct);
                     }
                     else if (response.code === 400) {
                         Toast.fire({
