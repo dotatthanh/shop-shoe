@@ -29,19 +29,22 @@
 
 @section('js')
     <script>
-        function inputChangeQuantity (rowId) {
-            let quantity = $('.input-quantity').val();
+        function inputChangeQuantity (e, rowId) {
+            let element = e.srcElement;
+            let quantity = $(element).parent().find('.input-quantity').val();
             process(rowId, quantity);
         }
 
-        function changeQuantityProductPlus (rowId) {
-            let quantity = $('.input-quantity').val();
+        function changeQuantityProductPlus (e, rowId) {
+            let element = e.srcElement;
+            let quantity = $(element).parent().find('.input-quantity').val();
             let newQuantity = parseInt(quantity) + 1;
             process(rowId, newQuantity);
         }
 
-        function changeQuantityProductMinus (rowId) {
-            let quantity = $('.input-quantity').val();
+        function changeQuantityProductMinus (e, rowId) {
+            let element = e.srcElement;
+            let quantity = $(element).parent().find('.input-quantity').val();
             let newQuantity = parseInt(quantity) - 1;
             process(rowId, newQuantity);
         }

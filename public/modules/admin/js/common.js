@@ -170,3 +170,9 @@ $('.btn-random-discount-code').on('click', function () {
         }
     })
 });
+
+$('.title-input').on('blur', function () {
+    let str = $(this).val()
+    str = str.replace(/([^0-9a-z-\s])/g, '');
+    $(this).val(str)
+});

@@ -6,15 +6,15 @@
             <span style="font-size: 13px">(Kích cỡ: {{ $item->options['size']['name'] }})</span>
         </td>
         <td class="text-center" style="display: flex; justify-content: center">
-            <button type="button" class="btn-increment" onclick="changeQuantityProductMinus('{{ $item->rowId }}')">-</button>
+            <button type="button" class="btn-increment" onclick="changeQuantityProductMinus(event, '{{ $item->rowId }}')">-</button>
             <input 
                 type="number" 
                 min="0" 
                 class="form-control input-quantity"
                 value="{{ $item->qty }}"
-                onkeyup="inputChangeQuantity('{{ $item->rowId }}')"
+                onkeyup="inputChangeQuantity(event, '{{ $item->rowId }}')"
             >
-            <button type="button" class="btn-increment" onclick="changeQuantityProductPlus('{{ $item->rowId }}')">+</button>
+            <button type="button" class="btn-increment" onclick="changeQuantityProductPlus(event, '{{ $item->rowId }}')">+</button>
         </td>
         <td>{{ number_format($item->price) }} VNĐ</td>
         <td>{{ number_format($item->qty * $item->price) }} VNĐ</td>

@@ -22,12 +22,35 @@ class ProductController extends AppController
         if ($request->has('search')) {
             $query = $query->where(function ($q) use ($request) {
                 $q->orWhere('title', 'like', '%'.$request->search.'%')
-                    ->orWhere('slug', 'like', '%'.$request->search.'%')
-                    ->orWhere('price', 'like', '%'.$request->search.'%');
+                    ->orWhere('slug', 'like', '%'.$request->search.'%');
             });
         }
 
-        $products = $query->with('sizes')->where('status', 'active')->paginate(PAGE_LIMIT);
+        if ($request->has('price_min') || $request->has('price_max')) {
+			$price_min = $request->price_min;
+			$price_max = $request->price_max;
+
+			if ($price_min && !$price_max) {
+				$query = $query->where('price', '>=', $price_min);
+			} elseif ($price_max && !$price_min) {
+				$query = $query->where('price', '<=', $price_max);
+			} elseif ($price_min && $price_max) {
+				$query = $query->whereBetween('price', [$price_min, $price_max]);
+			}
+		}
+
+        if ($request->has('status')) {
+            $query = $query->join('sizes', 'sizes.product_id', 'products.id');
+            if ($request->status === 1 || $request->status === '1') {
+                $query = $query->where('sizes.quantity', '>', 0);
+            }
+
+            if ($request->status === 0 || $request->status === '0') {
+                $query = $query->where('sizes.quantity', '=', 0);
+            }
+        }
+        
+        $products = $query->with('sizes')->where('status', 'active')->orderBy('price', 'asc')->paginate(PAGE_LIMIT);
 
         $data = [
             'products' => $products,

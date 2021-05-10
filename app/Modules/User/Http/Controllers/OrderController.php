@@ -43,10 +43,7 @@ class OrderController extends AppController
 		$size = json_decode($request->size);
 		$product = Product::findOrFail($id);
 
-        if (Cart::content()->where('id', $id)->first()) {
-            return redirect()->back()->with('alert-success', 'Giỏ hàng đã có sản phẩm!');
-        }
-        elseif ($size->quantity == 0) {
+        if ($size->quantity == 0) {
             return redirect()->back()->with('alert-error', 'Sản phẩm đã hết hàng!');
         }
 
@@ -147,24 +144,22 @@ class OrderController extends AppController
                 }
             }
 
+            $orderCreated = Order::create([
+                'user_id' => auth()->user()->id,
+                'code' => time(),
+                'total' => $totalProduct,
+                'status' => 'order'
+            ]);
+
             foreach ($carts as $cart) {
-                $orderCreated = Order::create([
-                    'user_id' => auth()->user()->id,
-                    'code' => time(),
-                    'total' => $totalProduct,
-                    'status' => 'order'
-                ]);
-                
                 if (isset($cart->options)) {
-                    foreach ($cart->options as $item) {
-                        OrderProduct::create([
-                            'order_id' => $orderCreated->id,
-                            'product_id' => $cart->id,
-                            'quantity' => $cart->qty,
-                            'price' => $cart->price,
-                            'size_name' => $cart->options['size']['name'] 
-                        ]);
-                    }
+                    OrderProduct::create([
+                        'order_id' => $orderCreated->id,
+                        'product_id' => $cart->id,
+                        'quantity' => $cart->qty,
+                        'price' => $cart->price,
+                        'size_name' => $cart->options['size']['name'] 
+                    ]);
                 }
             }
             DB::commit();
