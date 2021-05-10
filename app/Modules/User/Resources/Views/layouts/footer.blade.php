@@ -3,8 +3,8 @@
         <div class="row p-bot20">
             <div class="col-md-5 col-sm-5 col-xs-12 contact">
                 <h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
-                <p><i class="fa fa-map-marker" aria-hidden="true"></i>Võ Quý Huân, P.Phúc Diễn, Q.Bắc Từ Liêm Hà Nội</p>
-                <p><i class="fa fa-phone-square" aria-hidden="true"></i>Bs.Vũ Trí Linh: <a href="tel:0906 799 222">0906 799 222</a></p>
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i>232 Phạm Văn Đồng - Bắc Từ Liêm - Hà Nội</p>
+                <p><i class="fa fa-phone-square" aria-hidden="true"></i>Trần Đăng Mạnh: <a href="tel:0987916135">0987916135</a></p>
                 <a href="emailto:S-fashion@gmail.com" title=""><i class="fa fa-envelope" aria-hidden="true"></i>S-fashion@gmail.com</a>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 guide">
