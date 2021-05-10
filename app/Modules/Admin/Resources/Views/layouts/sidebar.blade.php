@@ -53,30 +53,20 @@
 					<span>Thương hiệu</span>
 				</a>
 			</li>
-			<li class="{{ request()->segment(2) === 'discount_code' ? 'active' : '' }}">
-				<a href="{{ route('admin.discount_code.index') }}">
-					<i class="fa fa-codiepie"></i> 
-					<span>Mã giảm giá</span>
-				</a>
-			</li>
-			{{-- <li class="{{ request()->segment(2) === 'member' ? 'active' : '' }}">
-				<a href="{{ route('admin.member.index') }}">
-					<i class="fa fa-user"></i>
-					<span>Thành viên</span>
-				</a>
-			</li> --}}
-			{{-- <li class="{{ request()->segment(2) === 'role' ? 'active' : '' }}">
-				<a href="{{ route('admin.role.index') }}">
-					<i class="fa fa-key"></i>
-					<span>Vai trò</span>
-				</a>
-			</li>
-			<li class="{{ request()->segment(2) === 'permission' ? 'active' : '' }}">
-				<a href="{{ route('admin.permission.index') }}">
-					<i class="fa fa-user-secret"></i>
-					<span>Quyền hạn</span>
-				</a>
-			</li> --}}
+			@if(in_array("super_admin", auth()->guard('admin')->user()->roles->pluck('name')->toArray()))
+				<li class="{{ request()->segment(2) === 'discount_code' ? 'active' : '' }}">
+					<a href="{{ route('admin.discount_code.index') }}">
+						<i class="fa fa-codiepie"></i> 
+						<span>Mã giảm giá</span>
+					</a>
+				</li>
+				<li class="{{ request()->segment(2) === 'member' ? 'active' : '' }}">
+					<a href="{{ route('admin.member.index') }}">
+						<i class="fa fa-user"></i>
+						<span>Thành viên</span>
+					</a>
+				</li>
+			@endif
 		</ul>
 	</section>
 	<!-- /.sidebar -->

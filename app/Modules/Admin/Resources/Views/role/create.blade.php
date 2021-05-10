@@ -24,25 +24,6 @@
                         <label>Tên</label>
                         <input type="text" name="name" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <p>Quyền hạn</p>
-                        @foreach ($permissions as $permission)
-                        <div class="col-md-4">
-                            <label class="checkbox-success">
-                                <input 
-                                    type="checkbox" 
-                                    class="listPermission"
-                                    id="permission{{ $permission->id }}"
-                                    value="{{ $permission->id }}" name="permissions[]"
-                                >
-                                <span></span>
-                            </label>
-                            <label for="permission{{ $permission->id }}"
-                                class="lbl-checkbox-success">{{ $permission->name }}
-                            </label>
-                        </div>
-                        @endforeach
-                    </div>
                 </div>
             </div>
         </div>

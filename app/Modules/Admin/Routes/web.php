@@ -60,7 +60,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 
         // Thành viên
-        Route::group(['prefix' => 'member'], function(){
+        Route::group(['prefix' => 'member', 'middleware' => 'role:super_admin'], function(){
             Route::get('/', 'MemberController@index')->name('member.index');
             Route::get('/add', 'MemberController@create')->name('member.create');
             Route::post('/add', 'MemberController@store')->name('member.store');
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 
         // Vai trò
-        Route::group(['prefix' => 'role'], function(){
+        Route::group(['prefix' => 'role', 'middleware' => 'role:super_admin'], function(){
             Route::get('/', 'RoleController@index')->name('role.index');
             Route::get('/create', 'RoleController@create')->name('role.create');
             Route::post('/store', 'RoleController@store')->name('role.store');
@@ -84,7 +84,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 
         // Quyền hạn
-        Route::group(['prefix' => 'permission'], function(){
+        Route::group(['prefix' => 'permission', 'middleware' => 'role:super_admin'], function(){
             Route::get('/', 'PermissionController@index')->name('permission.index');
             Route::get('/create', 'PermissionController@create')->name('permission.create');
             Route::post('/store', 'PermissionController@store')->name('permission.store');
