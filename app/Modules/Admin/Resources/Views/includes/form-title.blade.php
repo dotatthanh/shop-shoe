@@ -7,7 +7,7 @@
     <input 
         type="text" 
         name="title" 
-        class="form-control form-control-custom count_char" 
+        class="form-control form-control-custom count_char title-input" 
         value="{{ old('title', $dataEdit->title ?? '') }}"
         required
     >

@@ -28,7 +28,7 @@ class AdminController extends AppController
             $url = self::_getRedirectUrl();
             return redirect($url);
         } else {
-            $request->session()->flash('login-error', __('Wrong email or password.'));
+            $request->session()->flash('login-error', 'Sai tài khoản hoặc mật khẩu');
             return redirect()->back();
         }
     }

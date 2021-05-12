@@ -88,17 +88,12 @@
                                     </td>
                                     <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                     <td>
-                                        @if ($item->status !== 'cancel')
+                                        @if ($item->status !== 'cancel' && $item->status !== 'complete')
                                             <form class="d-inline-block" method="POST" action="{{ route('admin.order.cancel', $item->id) }}">
                                                 @csrf
                                                 <button class="w-60px btn btn-warning" type="submit">Hủy đơn</button>
                                             </form>
                                         @endif
-                                        <form class="d-inline-block" method="POST" action="{{ route('admin.order.destroy', $item->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="w-60px btn btn-danger" type="submit">Xóa</button>
-                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

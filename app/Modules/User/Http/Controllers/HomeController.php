@@ -13,9 +13,9 @@ use Cart;
 class HomeController extends AppController
 {
     public function index () {
-		$products = Product::limit(4)->get();
-		$productHots = Product::where('is_hot', PRODUCT_HOT)->limit(4)->get();
-		$newProducts = Product::where('is_new', NEW_PRODUCT)->limit(4)->get();
+		$products = Product::where('status', 'active')->limit(4)->get();
+		$productHots = Product::where('is_hot', PRODUCT_HOT)->where('status', 'active')->limit(4)->get();
+		$newProducts = Product::where('is_new', NEW_PRODUCT)->where('status', 'active')->limit(4)->get();
 		$categories = Category::all();
 		$total_product = Cart::count();
 
@@ -34,16 +34,16 @@ class HomeController extends AppController
 		
 		if ($slug == 'san-pham-ban-chay') {
 			$category['title'] = 'Sản phẩm bán chạy';
-			$query = Product::where('is_hot', 1);
+			$query = Product::where('status', 'active')->where('is_hot', 1);
 		}
 		elseif ($slug == 'san-pham-moi') {
 			$category['title'] = 'Sản phẩm mới';
-			$query = Product::where('is_new', 1);
+			$query = Product::where('status', 'active')->where('is_new', 1);
 		}
 		else {
 			$category = Category::where('slug', $slug)->first();
 			$productIds = ProductCategory::where('category_id', $category->id)->get()->pluck('product_id');
-			$query = Product::whereIn('id', $productIds);
+			$query = Product::whereIn('id', $productIds)->where('status', 'active');
 		}
 
 		if ($request->has('price_min') || $request->has('price_max')) {

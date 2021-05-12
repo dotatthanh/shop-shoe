@@ -48,27 +48,6 @@
                         {!! $errors->first('roles[]', '<span class="help-block error">:message</span>') !!}
                     </div>
                     <div class="form-group">
-                        <p>Quyền hạn</p>
-                        <div class="row">
-                            @foreach ($permissions as $permission)
-                                <div class="col-md-4">
-                                    <label class="checkbox-success">
-                                        <input 
-                                            type="checkbox" 
-                                            class="listPermission"
-                                            id="permission{{ $permission->id }}"
-                                            value="{{ $permission->id }}" name="permissions[]"
-                                        >
-                                        <span></span>
-                                    </label>
-                                    <label for="permission{{ $permission->id }}"
-                                        class="lbl-checkbox-success">{{ $permission->name }}
-                                    </label>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label>Mật khẩu</label>
                         <input type="password" name="password" class="form-control">
                         {!! $errors->first('password', '<span class="help-block error">:message</span>') !!}

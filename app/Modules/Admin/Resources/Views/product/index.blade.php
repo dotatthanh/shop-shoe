@@ -21,13 +21,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <form action="{{ route('admin.product.index') }}" method="GET" class="form-horizontal">
-                                <div class="box-body">
+                                <div class="box-body row">
                                     <div class="form-group">
-                                        <div class="col-sm-7">
-                                            <input type="text" name="search" class="form-control" placeholder="Tìm kiếm theo tên, slug, giá bán" value="{{ request()->search }}">
+                                        <div class="col-md-3" style="padding-right: 5px">
+                                            <input type="text" name="search" class="form-control" placeholder="Tìm kiếm theo tên, slug" value="{{ request()->search }}">
+                                        </div>
+                                        <div class="col-md-2" style="padding-right: 5px; padding-left: 5px">
+                                            <input type="text" name="price_min" class="form-control" placeholder="Giá nhỏ nhất" value="{{ request()->price_min }}">
+                                        </div>
+                                        <div class="col-md-2" style="padding-right: 5px; padding-left: 5px">
+                                            <input type="text" name="price_max" class="form-control" placeholder="Giá lớn nhất" value="{{ request()->price_max }}">
+                                        </div>
+                                        <div class="col-md-3" style="padding-left: 5px">
+                                            <select name="status" id="" class="form-control" value="{{ request()->status }}">
+                                                <option value="">--Kiểm tra hàng--</option>
+                                                <option value="1" @if(request()->status == 1) selected @endif>Còn hàng</option>
+                                                <option value="0" @if(request()->status != null && request()->status == 0) selected @endif>Hết hàng</option>
+                                            </select>
                                         </div>
         
-                                        <button type="submit" class="btn btn-success col-sm-2">Tìm kiếm</button>
+                                        <button type="submit" class="btn btn-success col-md-2">Tìm kiếm</button>
                                     </div>
                                 </div>
                             </form>
@@ -118,7 +131,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $products->appends(['search' => $search])->links() }}
+                        {{ $products->appends(['search' => $search ?? null])->links() }}
                     </div>
                 </div>
             </div>

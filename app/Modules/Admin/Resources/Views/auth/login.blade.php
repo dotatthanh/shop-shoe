@@ -25,6 +25,14 @@
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        .required,
+        .error {
+            color: red;
+            font-weight: normal;
+        }
+    </style>
 </head>
 
 <body class="hold-transition login-page">
@@ -34,19 +42,23 @@
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Đăng nhập để truy cập trang quản trị</p>
 
-            <form method="POST" action="{{ route('admin.signIn') }}" autocomplete="off">
+            @if (Session::has('login-error'))
+                <div class="alert alert-danger">
+                    {{ Session::get('login-error') }}
+                </div>
+            @endif  
+
+            <form method="POST" action="{{ route('admin.signIn') }}" autocomplete="off" class="login-form">
                 @csrf
                 <div class="form-group has-feedback">
-                    <input type="email" name="email" class="form-control" placeholder="Email">
-                    {!! $errors->first('email', '<span class="help-block error">:message</span>') !!}
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
+                    {!! $errors->first('email', '<span class="help-block required">:message</span>') !!}
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                    {!! $errors->first('password', '<span class="help-block error">:message</span>') !!}
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                    {!! $errors->first('password', '<span class="help-block required">:message</span>') !!}
                 </div>
                 <div class="row">
                     <!-- <div class="col-xs-8">
@@ -58,7 +70,7 @@
                     </div> -->
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -71,8 +83,36 @@
 
     <!-- jQuery 3 -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <script>
+        $(".login-form").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 32
+                },
+            },
+            messages: {
+                email: {
+                    required: "Trường này không được để trống",
+                    email: "Nhập không đúng định dạng email"
+                },
+                password: {
+                    required: "Trường này không được để trống",
+                    minlength: "Mật khẩu tối thiểu 6 ký tự",
+                    maxlength: "Mật khẩu tối đa 32 ký tự",
+                },
+            },
+        });
+    </script>
 </body>
 
 </html>

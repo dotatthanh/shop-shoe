@@ -32,7 +32,7 @@
     </script>
     <script src="{{ asset('plugins/toastr/sweetalert2@10.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>

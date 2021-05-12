@@ -50,7 +50,6 @@
                                     <th>Email</th>
                                     <th style="min-width: 100px">Ngày tạo</th>
                                     <th>Vai trò</th>
-                                    <th>Quyền hạn</th>
                                     <th style="min-width: 155px">Hành đồng</th>
                                 </tr>
                             </thead>
@@ -69,15 +68,6 @@
                                     <td>
                                         @foreach ($listRole as $value)
                                             <span class="badge badge-dark text-white">{{ $value }}</span>
-                                        @endforeach
-                                    </td>
-
-                                    @php
-                                        $listPermission = $item->getAllPermissions()->pluck('name')
-                                    @endphp
-                                    <td>
-                                        @foreach ($listPermission as $value)
-                                            <span class="badge text-white" style="background: #7f29ab;">{{ $value }}</span>
                                         @endforeach
                                     </td>
                                     <td>
