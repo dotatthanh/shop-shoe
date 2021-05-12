@@ -14,6 +14,6 @@ class DiscountCode extends Model
         'end_date',
         'status',
         'percent',
-        'type'
+        // 'type'
     ];
 }

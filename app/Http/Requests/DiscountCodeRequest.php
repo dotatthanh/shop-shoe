@@ -25,7 +25,7 @@ class DiscountCodeRequest extends FormRequest
     {
         return [
             'code' => 'required|min:4|max:32',
-            'type' => 'required'
+            // 'type' => 'required'
         ];
     }
 
@@ -35,7 +35,7 @@ class DiscountCodeRequest extends FormRequest
             'code.required' => 'Mã giảm giá là trường bắt buộc',
             'code.min' => 'Độ dài tối thiếu 4 ký tự',
             'code.max' => 'Độ dài tối đa 32 ký tự',
-            'type.required' => 'Loại giảm giá là trường bắt buộc',
+            // 'type.required' => 'Loại giảm giá là trường bắt buộc',
         ];
     }
 }

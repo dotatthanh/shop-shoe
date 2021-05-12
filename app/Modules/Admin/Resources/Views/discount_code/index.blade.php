@@ -51,7 +51,7 @@
                                     <th>Thời gian bắt đầu</th>
                                     <th>Thời gian kết thúc</th>
                                     <th>Trạng thái</th>
-                                    <th>Loại</th>
+                                    {{-- <th>Loại</th> --}}
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -70,7 +70,7 @@
                                                 <label class="label label-danger">Riêng tư</label>
                                             @endif
                                         </td>
-                                        <td>{{ $item->type }}</td>
+                                        {{-- <td>{{ $item->type }}</td> --}}
                                         <td>
                                             <a href="{{ route('admin.discount_code.edit', $item->id) }}" class="btn btn-warning text-white">Sửa</a>
                                             <form class="d-inline-block" method="POST" action="{{ route('admin.discount_code.delete', $item->id) }}">

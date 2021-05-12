@@ -245,8 +245,8 @@ body {
 }
 
 .menu li ul li:hover a {
-  color: #00b4ff;
-  background: #fd030370;
+  color: #fff;
+  background: #337ab7;
   transition: .2s;
 }
 
