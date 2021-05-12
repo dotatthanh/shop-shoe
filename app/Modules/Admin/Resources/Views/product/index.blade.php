@@ -27,10 +27,23 @@
                                             <input type="text" name="search" class="form-control" placeholder="Tìm kiếm theo tên, slug" value="{{ request()->search }}">
                                         </div>
                                         <div class="col-md-2" style="padding-right: 5px; padding-left: 5px">
-                                            <input type="text" name="price_min" class="form-control" placeholder="Giá nhỏ nhất" value="{{ request()->price_min }}">
+                                            <select name="supplier" class="form-control">
+                                                <option value="">---Nhãn hiệu---</option>
+                                                @foreach ($suppliers as $item)
+                                                    <option 
+                                                        value="{{ $item->id }}"
+                                                        @if (request()->supplier == $item->id) selected @endif
+                                                    >{{ $item->title }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-md-2" style="padding-right: 5px; padding-left: 5px">
-                                            <input type="text" name="price_max" class="form-control" placeholder="Giá lớn nhất" value="{{ request()->price_max }}">
+                                            <select name="price" class="form-control">
+                                                <option value="">---Khoảng giá---</option>
+                                                <option value="<1000000" @if (request()->price == '<1000000') selected @endif> < 1,000,000 VNĐ</option>
+                                                <option value="1000000_3000000" @if (request()->price == '1000000_3000000') selected @endif> 1,000,000 - 3,000,000 VNĐ</option>
+                                                <option value="3000000_5000000" @if (request()->price == '3000000_5000000') selected @endif> 3,000,000 - 5,000,000 VNĐ</option>
+                                            </select>
                                         </div>
                                         <div class="col-md-3" style="padding-left: 5px">
                                             <select name="status" id="" class="form-control" value="{{ request()->status }}">

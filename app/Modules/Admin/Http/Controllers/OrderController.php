@@ -56,7 +56,10 @@ class OrderController extends AppController
         $order->save();
 
         foreach ($orderProducts as $product) {
-            $size = Size::where('name', $product['size_name'])->first();
+            $size = Size::where([
+                'name' => $product['size_name'],
+                'product_id' => $product['product_id']
+            ])->first();
             $incrementQuantity = (int)$size->quantity + (int)$product['quantity'];
 
             $size->update([

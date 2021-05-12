@@ -18,6 +18,7 @@ class ProductController extends AppController
 {
     public function index(Request $request) {
         $query = Product::query();
+        $suppliers = Supplier::all();
 
         if ($request->has('search')) {
             $query = $query->where(function ($q) use ($request) {
@@ -26,17 +27,23 @@ class ProductController extends AppController
             });
         }
 
-        if ($request->has('price_min') || $request->has('price_max')) {
-			$price_min = $request->price_min;
-			$price_max = $request->price_max;
+        if ($request->has('supplier') && $request->supplier) {
+            $query = $query->where('supplier_id', $request->supplier);
+        }
 
-			if ($price_min && !$price_max) {
-				$query = $query->where('price', '>=', $price_min);
-			} elseif ($price_max && !$price_min) {
-				$query = $query->where('price', '<=', $price_max);
-			} elseif ($price_min && $price_max) {
-				$query = $query->whereBetween('price', [$price_min, $price_max]);
-			}
+        if ($request->has('price') && $request->price) {
+			$price = $request->price;
+
+            if ($price == '<1000000') {
+                $query = $query->where('price', '<', 1000000);
+            } else {
+                $priceSplice = explode('_', $price);
+                if (count($priceSplice) > 1) {
+                    $priceMin = $priceSplice[0];
+                    $priceMax = $priceSplice[1];
+                    $query = $query->whereBetween('price', [$priceMin, $priceMax]);
+                }
+            }
 		}
 
         if ($request->has('status')) {
@@ -71,6 +78,7 @@ class ProductController extends AppController
         $data = [
             'products' => $products,
             'search' => $request->search,
+            'suppliers' => $suppliers,
         ];
 
         return view('admin::product.index', $data);
