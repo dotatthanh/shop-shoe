@@ -67,7 +67,7 @@
                                         @if (isset($item->order_products))
                                             @foreach ($item->order_products as $order)
                                                 <a href="{{ route('user.product-detail', ['slug' => $order->product->slug, 'id' => $order->product->id]) }}" target="_blank">{{ $order->product->title }}</a>
-                                                <p>(Kích cỡ: {{ $order->size_name }})</p>
+                                                <p>(Kích cỡ: {{ $order->size_name }}, Số lượng: {{ $order->quantity }})</p>
                                             @endforeach
                                         @endif
                                     </td>
