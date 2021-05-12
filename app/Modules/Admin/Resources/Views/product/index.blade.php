@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <form action="{{ route('admin.product.index') }}" method="GET" class="form-horizontal">
                                 <div class="box-body row">
                                     <div class="form-group">
@@ -45,7 +45,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-2 text-right mt-1">
                             <a href="{{ route('admin.product.create') }}" class="btn btn-success">
                                 <i class="fa fa-plus"></i>
                                 <span>Tạo mới</span>

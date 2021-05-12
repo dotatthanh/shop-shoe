@@ -176,3 +176,9 @@ $('.title-input').on('blur', function () {
     str = str.replace(/([^0-9a-z-\s])/g, '');
     $(this).val(str)
 });
+
+$('.sku-input').on('blur', function () {
+    let str = $(this).val()
+    str = str.replace(/([^0-9a-z-\s])/g, '');
+    $(this).val(str)
+});
