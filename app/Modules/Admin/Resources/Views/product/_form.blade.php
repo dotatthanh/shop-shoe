@@ -8,7 +8,7 @@
                     <input 
                         type="text" 
                         name="sku" 
-                        class="form-control form-control-custom count_char" 
+                        class="form-control form-control-custom count_char sku-input" 
                         value="{{ old('sku', $dataEdit->sku ?? '') }}"
                         required
                     >

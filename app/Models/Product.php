@@ -44,4 +44,9 @@ class Product extends Model
     public function sizes() {
         return $this->hasMany('App\Models\Size', 'product_id', 'id');
     }
+
+    public function getSizeAttribute($value)
+    {
+        return $this->sizes()->sum('quantity');
+    }
 }

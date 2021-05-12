@@ -40,16 +40,32 @@ class ProductController extends AppController
 		}
 
         if ($request->has('status')) {
-            $query = $query->join('sizes', 'sizes.product_id', 'products.id');
             if ($request->status === 1 || $request->status === '1') {
-                $query = $query->where('sizes.quantity', '>', 0);
+                $query = $query->get()->filter(function($item) {
+                    return $item->size > 0;
+                });
+                if ($query->isEmpty()) {
+                    $query = Product::query()->where('id', 0);
+                }
+                else {
+                    $query = $query->toQuery();
+                }
             }
 
             if ($request->status === 0 || $request->status === '0') {
-                $query = $query->where('sizes.quantity', '=', 0);
+                $query = $query->get()->filter(function($item) {
+                    return $item->size == 0;
+                });
+
+                if ($query->isEmpty()) {
+                    $query = Product::query()->where('id', 0);
+                }
+                else {
+                    $query = $query->toQuery();
+                }
             }
         }
-        
+
         $products = $query->with('sizes')->where('status', 'active')->orderBy('price', 'asc')->paginate(PAGE_LIMIT);
 
         $data = [
