@@ -74,7 +74,7 @@ class HomeController extends AppController
 	public function productDetail ($slug, $id) {
 		$categories = Category::all();
 		$product = Product::findOrFail($id);
-		$products = Product::inRandomOrder()->limit(5)->get();
+		$products = Product::inRandomOrder()->limit(4)->get();
 		$total_product = Cart::count();
 
 		$data = [
