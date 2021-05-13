@@ -55,7 +55,7 @@ function addSize() {
             <div class="col-md-5 mt-1">
                 <input 
                     type="number" 
-                    min="1"
+                    min="0"
                     name="quantities[${index}]" 
                     class="form-control form-control-custom count_char" 
                     value=""
