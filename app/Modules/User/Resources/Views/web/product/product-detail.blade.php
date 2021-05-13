@@ -70,7 +70,7 @@
 					</div>
 
 					<div class="m-top20">
-						<a href="#" title="" class="product-other">Sản phẩm khác</a>
+						<a href="#other-products" title="" class="product-other">Sản phẩm khác</a>
 						<button type="submit" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng</button>
 					</div>
 				</form>
@@ -95,7 +95,7 @@
 	<!-- 			Phụ kiện			-->
 	<div class="container p-top50 p-bot30">
 		<h2 class="title-category">
-			<a href="#" title="">SẢN PHẨM KHÁC</a>
+			<a href="javascript:void(0)" id="other-products" title="">SẢN PHẨM KHÁC</a>
 		</h2>
 		<div class="row p-top30">
 			@foreach ($products as $item)

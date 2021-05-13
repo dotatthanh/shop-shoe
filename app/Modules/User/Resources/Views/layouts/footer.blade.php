@@ -9,7 +9,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12 guide">
                 <h2>HƯỚNG DẪN SỬ DỤNG</h2>
-                <a href="{{ route('register') }}" title="">Đăng ký</a>
+                <a href="javascript:void(0)" title="">Đăng ký</a>
             </div>
             <!-- <div class="col-md-4 col-sm-4 col-xs-12 registry">
                 <h2>ĐĂNG KÝ NGAY</h2>
