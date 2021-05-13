@@ -63,7 +63,7 @@
 				<li class="{{ request()->segment(2) === 'member' ? 'active' : '' }}">
 					<a href="{{ route('admin.member.index') }}">
 						<i class="fa fa-user"></i>
-						<span>Thành viên</span>
+						<span>Nhân viên</span>
 					</a>
 				</li>
 			@endif

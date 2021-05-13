@@ -4,9 +4,13 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="brand">
 					@if (auth()->user())
-						<a href="javascript:void(0)">
-							Xin chào <b style="font-size: 16px">{{ auth()->user()->name }}</b>
-						</a>
+						<div class="dropdown d-inline-block">
+		                    <button class="btn text-white dropdown-toggle w-160px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                    {{ auth()->user()->name }} <i class="fa fa-angle-down ml-2" aria-hidden="true"></i></button>
+		                    <ul class="dropdown-menu">
+		                    	<li><a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a></li>
+		                    </ul>
+		                </div>
 					@else
 						<a href="javascript:void(0)" onclick="showModalUser('login')">
 							Đăng nhập

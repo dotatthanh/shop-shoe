@@ -17,7 +17,7 @@
 			<ul class="nav navbar-nav">
 				<!-- User Account: style can be found in dropdown.less -->
 				<li class="dropdown user user-menu">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="{{ asset('/images/default.jpg') }}" class="user-image" alt="User Image">
 						<span class="hidden-xs">{{ auth()->guard('admin')->user()->name }}</span>
 					</a>
