@@ -173,12 +173,12 @@ $('.btn-random-discount-code').on('click', function () {
 
 $('.title-input').on('blur', function () {
     let str = $(this).val()
-    str = str.replace(/([^0-9a-zA-Z-\s])/g, '');
+    str = str.replace(/([^0-9a-zA-Z(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|ì|í|ị|ỉ|ĩ|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ỳ|ý|ỵ|ỷ|ỹ|đ)\s])/g, '');
     $(this).val(str)
 });
 
 $('.sku-input').on('blur', function () {
     let str = $(this).val()
-    str = str.replace(/([^0-9a-zA-Z-\s])/g, '');
+    str = str.replace(/([^0-9a-zA-Z(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|ì|í|ị|ỉ|ĩ|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ỳ|ý|ỵ|ỷ|ỹ|đ)\s])/g, '');
     $(this).val(str)
 });
